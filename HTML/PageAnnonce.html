@@ -31,36 +31,44 @@
 </header>
 
 
-<div class="center_section" id="inscription_section">
+<div class="center_section" id="annonce_section">
 
 <p>Veuillez renseignez les champs ci-dessous</p>
 
 <form method="post" action="#">
 
-<input type="text" name="prenom" id="prenom" placeholder="Prénom"><br>
-<input type="text" name="nom" id="nom" placeholder="Nom"><br>
-<select name="pays" id="pays" >
-<option value="null">Pays</option>
-<option value="france">France</option>
-<option value="espagne">Espagne</option>
-<option value="royaume-uni">Royaume-Uni</option>
+<h2>Catégories</h2>
+<select name="carégorie" id="categrorie_choix" >
+<option value="null">Choissisez votre catégorie</option>
+<option value="fruit">Fruit</option>
+<option value="legume">Légume</option>
 </select><br>
+<select name="variete" id="variete_choix" >
+<option value="null">Choissisez votre variété</option>
+<option value="pomme">Pomme</option>
+<option value="poire">Poire</option>
+</select><br>
+<h2>Localisation</h2>
 <select name="region" id="region" >
 <option value="null">Région</option>
 <option value="ile_de_france">Ile-de-France</option>
 <option value="bourgogne">Bourgogne</option>
 </select><br>
+<input type="text" name="code_postal" id="code_postal" placeholder="Code Postal">
+<input type="text" name="ville" id="ville" placeholder="Ville"><br>
+<h2>Vos Informations</h2>
 <input type="text" name="ville" id="ville" placeholder="Ville"><br>
 <input type="email" name="adresse_mail" id="adresse_mail" placeholder="Adresse mail"><br>
 <input type="text" name="adresse" id="adresse" placeholder="Adresse"><br>
-<input type="tel" name="numero_de_tel" id="numero_de_tel" placeholder="N° de Téléphone"><br>
-<textarea name="description_personnelle" id="description_personnelle" placeholder="Description Personelle"></textarea><br>
-<input type="password" name="mdp" id="mdp" placeholder="Mot de passe"><br>
-<input type="password" name="confirmation_mdp" id="confirmation_mdp" placeholder="Confirmation mot de passe"><br>
+<h2>Votre Annonce</h2>
+<input type="text" name="titre" id="titre" placeholder="Titre"><br>
+<textarea name="description_annonce" id="description_annonce" placeholder="Description Annonce"></textarea><br>
+<input type="text" name="prix" id="prix" placeholder="Prix">€<br>
+<h3>Photo : </h3>
 
-
-<input type="checkbox" name="check_condition_g" id="check_condition_g">J'accepte les conditions génarales d'utilisation<br>
-<input type="checkbox" name="check_newsletter" id="check_newsletter">Soubscrition à la newsletter<br>
+<input type="file" name="photo" id="photo_1">
+<input type="file" name="photo" id="photo_1">
+<input type="file" name="photo" id="photo_1"><br>
 
 <input type="submit" value="Envoyer">
 
