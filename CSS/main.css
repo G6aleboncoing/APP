@@ -1,0 +1,180 @@
+/* page d'acceuil */
+
+body {
+
+width:70%;
+margin: auto;
+background: #91e842;
+background: -moz-linear-gradient(top, #91e842 0%, #d2ff52 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #91e842), color-stop(100%, #d2ff52));
+background: -webkit-linear-gradient(top, #91e842 0%, #d2ff52 100%);
+background: -o-linear-gradient(top, #91e842 0%, #d2ff52 100%);
+background: -ms-linear-gradient(top, #91e842 0%, #d2ff52 100%);
+background: linear-gradient(to bottom, #91e842 0%, #d2ff52 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91e842', endColorstr='#d2ff52', GradientType=0 );
+
+border-radius: 0px 0px 0px 0px;
+-moz-border-radius: 0px 0px 0px 0px;
+-webkit-border-radius: 0px 0px 0px 0px;
+border: 10px solid #8f8f8f;
+
+
+}
+
+/* header */
+
+
+
+#langue_select{
+
+float : left ;
+display : block;
+margin-top : 1%;
+
+
+
+}
+
+#password_section{
+
+float : right ;
+display : block;
+margin-top : 1%;
+
+
+}
+
+
+
+
+/*bannière*/
+
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+}
+#cssmenu {
+  width: auto;
+  height: 59px;
+  padding-bottom: 4px;
+}
+#cssmenu.align-right {
+  float: right;
+}
+#cssmenu.align-right ul li {
+  float: right;
+  margin-right: 0;
+  margin-left: 4px;
+}
+#cssmenu.align-right ul li:first-child,
+#cssmenu.align-right ul li:first-child > a {
+  border-bottom-right-radius: 3px;
+}
+#cssmenu #bg-one,
+#cssmenu #bg-two,
+#cssmenu #bg-three,
+#cssmenu #bg-four {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+#cssmenu #bg-one {
+  height: 10px;
+  background: #199400;
+}
+#cssmenu #bg-two {
+  height: 59px;
+  z-index: 2;
+
+}
+#cssmenu #bg-three {
+  bottom: 4px;
+  height: 55px;
+  z-index: 3;
+background: #dedede;
+background: -moz-linear-gradient(top, #dedede 0%, #666566 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #dedede), color-stop(100%, #666566));
+background: -webkit-linear-gradient(top, #dedede 0%, #666566 100%);
+background: -o-linear-gradient(top, #dedede 0%, #666566 100%);
+background: -ms-linear-gradient(top, #dedede 0%, #666566 100%);
+background: linear-gradient(to bottom, #dedede 0%, #666566 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedede', endColorstr='#666566', GradientType=0 );
+}
+#cssmenu #bg-four {
+  bottom: 4px;
+  height: 55px;
+  z-index: 4;
+
+}
+#cssmenu ul {
+  height: 59px;
+}
+#cssmenu ul li {
+  float: left;
+  margin-right: 4px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  z-index: 5;
+}
+#cssmenu ul li a {
+  padding: 24px 30px 20px 30px;
+  margin-bottom: 4px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #eeeeee;
+  font-size: 15px;
+  text-decoration: none;
+}
+#cssmenu ul li:first-child,
+#cssmenu ul li:first-child > a {
+  border-bottom-left-radius: 3px;
+}
+#cssmenu ul li:hover,
+#cssmenu ul li.active {
+background: #ceff52;
+background: -moz-linear-gradient(top, #ceff52 0%, #199400 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #ceff52), color-stop(100%, #199400));
+background: -webkit-linear-gradient(top, #ceff52 0%, #199400 100%);
+background: -o-linear-gradient(top, #ceff52 0%, #199400 100%);
+background: -ms-linear-gradient(top, #ceff52 0%, #199400 100%);
+background: linear-gradient(to bottom, #ceff52 0%, #199400 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ceff52', endColorstr='#199400', GradientType=0 );
+}
+#cssmenu ul li a:hover,
+#cssmenu ul li.active > a {
+
+  color: #ffffff;
+}
+
+/* fin bannière */
+
+
+/*centre*/
+
+#annonce_section,#recettes_section,#categories_section{
+
+background-color:white;
+
+
+}
+
+#recettes_section{
+
+display:block;
+float:left;
+
+
+}
+
+
+
