@@ -3,20 +3,24 @@
 body {
 
 width:70%;
-margin: auto;
-background: #91e842;
-background: -moz-linear-gradient(top, #91e842 0%, #d2ff52 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, #91e842), color-stop(100%, #d2ff52));
-background: -webkit-linear-gradient(top, #91e842 0%, #d2ff52 100%);
-background: -o-linear-gradient(top, #91e842 0%, #d2ff52 100%);
-background: -ms-linear-gradient(top, #91e842 0%, #d2ff52 100%);
-background: linear-gradient(to bottom, #91e842 0%, #d2ff52 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91e842', endColorstr='#d2ff52', GradientType=0 );
+margin :auto;
+padding : 5px;
 
-border-radius: 0px 0px 0px 0px;
--moz-border-radius: 0px 0px 0px 0px;
--webkit-border-radius: 0px 0px 0px 0px;
-border: 10px solid #8f8f8f;
+background: #b5a793;
+background: -moz-linear-gradient(top, #b5a793 0%, #d4cca5 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #b5a793), color-stop(100%, #d4cca5));
+background: -webkit-linear-gradient(top, #b5a793 0%, #d4cca5 100%);
+background: -o-linear-gradient(top, #b5a793 0%, #d4cca5 100%);
+background: -ms-linear-gradient(top, #b5a793 0%, #d4cca5 100%);
+background: linear-gradient(to bottom, #b5a793 0%, #d4cca5 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5a793', endColorstr='#d4cca5', GradientType=0 );
+
+border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 5px solid #383838;
+
+color : black;
 
 
 }
@@ -29,7 +33,7 @@ border: 10px solid #8f8f8f;
 
 float : left ;
 display : block;
-margin-top : 1%;
+
 
 
 
@@ -39,15 +43,24 @@ margin-top : 1%;
 
 float : right ;
 display : block;
-margin-top : 1%;
+
 
 
 }
 
+#banniere{
+
+position : relative;
+width: 98%;
+margin-top : 2%;
+margin-bottom : 2%;
+box-shadow: 0px 4px 4px #1c1a19;
+margin-left: 8px;
+
+}
 
 
-
-/*bannière*/
+/*menu*/
 
 #cssmenu,
 #cssmenu ul,
@@ -90,7 +103,7 @@ margin-top : 1%;
 }
 #cssmenu #bg-one {
   height: 10px;
-  background: #199400;
+  background: #a3ffb9;
 }
 #cssmenu #bg-two {
   height: 59px;
@@ -142,13 +155,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedede', end
 #cssmenu ul li:hover,
 #cssmenu ul li.active {
 background: #ceff52;
-background: -moz-linear-gradient(top, #ceff52 0%, #199400 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, #ceff52), color-stop(100%, #199400));
-background: -webkit-linear-gradient(top, #ceff52 0%, #199400 100%);
-background: -o-linear-gradient(top, #ceff52 0%, #199400 100%);
-background: -ms-linear-gradient(top, #ceff52 0%, #199400 100%);
-background: linear-gradient(to bottom, #ceff52 0%, #199400 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ceff52', endColorstr='#199400', GradientType=0 );
+background-image: -moz-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: -ms-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: -o-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: -webkit-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: linear-gradient(top, #529c5f, #a3ffb9);
 }
 #cssmenu ul li a:hover,
 #cssmenu ul li.active > a {
@@ -161,20 +172,57 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ceff52', end
 
 /*centre*/
 
-#annonce_section,#recettes_section,#categories_section{
+#annonce_section,#categories_section{
 
-background-color:white;
-
-
-}
-
-#recettes_section{
-
-display:block;
-float:left;
+display:inline-block;
+vertical-align:top;
 
 
 }
 
+#categories_section{
+
+position : relative;
+width : 25%;
+
+padding: 2px;
+background-color: #fffcfd;
+border: 2px solid #426153;
+border-radius: 5px;
+box-shadow: 5px 5px 5px 1px #8c8396;
+background-image: -moz-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: -ms-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: -o-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: -webkit-linear-gradient(top, #529c5f, #a3ffb9);
+background-image: linear-gradient(top, #529c5f, #a3ffb9);
+background-clip: border-box;
+
+
+}
+
+
+#categories_section ul{
+
+
+list-style-type : none;
+
+
+}
+
+
+
+
+/*footer*/
+
+footer{
+
+display:inline-block;
+position : relative;
+left :25%;
+
+
+
+
+}
 
 
