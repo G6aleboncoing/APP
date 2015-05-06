@@ -3,30 +3,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" media="screen" type="text/css" href="../CSS/PageAccueil.css" />
+<link rel="stylesheet" media="screen" type="text/css" href="../CSS/main.css" />
 <link rel="icon" type="image/png" href="images/coing.png" />
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="../JavaScript/main.js"></script>
 <title>LeBonCoing</title>
 </head>
 
 <body>
 
-
 <?php include("header.php"); ?> 
+
+<?php include("boutonsection.php"); ?>
 
 <?php 
 //permet de se connecter a la bdd
 include("configuration.php"); ?>
 
 <?php
+$form=false;
 //vérifier si les champs sont remplis-si le formulaire a été envoyé
-if(isset($_POST)!='' && 
-	isset($_POST['nom'])!='' && 
+if(	isset($_POST['nom'])!='' && 
 	isset($_POST['prenom'])!='' && 
 	isset($_POST['email'])!='' && 
 	isset($_POST['passe'])!='' && 
 	isset($_POST['pays'])!='' &&
-	isset($_POST['ville'])!='' and
+	isset($_POST['ville'])!='' &&
 	isset($_POST['detail'])!=''  ){
+		
+	if(!empty($_POST['nom']) 	
+		&& !empty($_POST['prenom'])
+		&& !empty($_POST['passe'])
+		&& !empty($_POST['pays'])
+		&& !empty($_POST['ville'])
+		&& !empty($_POST['detail'])){
 //Alors on enleve lechappement 
 
 		
@@ -77,8 +87,7 @@ if(isset($_POST)!='' &&
 					$i->execute();
 		
 					echo'envoyé';
-					$form = false;
-				
+				$form=true;
 				}
 			}else{
 			//si adresse déjà utilisé
@@ -90,9 +99,12 @@ if(isset($_POST)!='' &&
 			echo 'Veuillez entrer une adresse électronique valide';
 
 		} 
-	
+	} else {
+	echo'Veuillez remplir tout les champs';
+	}
+} else {	
+$form = false;
 }
-else {	$form = true;}
 
 if ($form=true )
 {
