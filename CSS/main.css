@@ -52,7 +52,14 @@ text-decoration:none;
 
 /* header */
 
+header{
 
+display :inline-block;
+vertical-align:top;
+
+
+
+}
 
 #langue_select{
 
@@ -63,6 +70,18 @@ border : 2px solid #8c8396;
 
 
 }
+
+
+#logo{
+float:left;
+margin:5px;
+margin-bottom : 20px;
+font-family: Brawler ;
+line-height: 1em;
+color: #38b559;
+font-size: 50px;
+text-shadow:0px 0px 0 rgb(31,156,64),1px 1px 0 rgb(6,131,39),2px 2px 0 rgb(-19,106,14),3px 3px 0 rgb(-44,81,-11),4px 4px 0 rgb(-69,56,-36), 5px 5px 0 rgb(-94,31,-61),6px 6px 5px rgba(0,0,0,0.6),6px 6px 1px rgba(0,0,0,0.5),0px 0px 5px rgba(0,0,0,.2);}
+
 
 #password_section{
 
@@ -85,18 +104,35 @@ margin-left:15%;
 }
 
 
-#banniere{
+#slideshow{
 
 position : relative;
-width: 98%;
-height:100%;
+width: 900px;
+height: 423px;
 margin-top : 2%;
 margin-bottom : 2%;
 box-shadow: 0px 4px 4px #1c1a19;
-margin-left: 8px;
+border: 2px solid black;
+margin-left: 20px;
+overflow :hidden;
 
 }
 
+#slideshow ul{
+
+width: 400%;
+height: 100%;
+padding:0; margin:0;
+list-style: none;
+
+
+}
+
+#slideshow li {
+
+display: inline-block;
+
+}
 
 /*menu*/
 
