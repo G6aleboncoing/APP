@@ -17,17 +17,4 @@ CREATE TABLE  `photo_profil` (
 	`membre_id` INT(11) UNSIGNED NOT NULL ,
 	`nom` VARCHAR(45) NOT NULL ,
 	PRIMARY KEY (`id_photo`)
-	
-	
 ) TYPE = MYISAM ;
-
-CREATE TABLE `annonces` (
-    `id_annonce` int(11) unsigned NOT NULL AUTO_INCREMENT,
-    `titre` varchar(45) NOT NULL,
-    `description` varchar(300) NOT NULL,
-    `genre` varchar(30) NOT NULL,
-    `variete` varchar(30) NOT NULL,
-    `prix` varchar(30) NOT NULL,
-    
-    PRIMARY KEY (`id_annonce`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
