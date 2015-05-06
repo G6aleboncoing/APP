@@ -22,8 +22,8 @@
 <form id="password_section">
 <input type="email" name="adresse_mail" placeholder="adresse mail">
 <input type="password" name="mot_de_passe" placeholder="mot de passe"><br>
-<a href="#">Créer votre compte</a>
-<a href="#">Mot de passe oublié ?</a>
+<a href="#" id="password_creation">Créer votre compte</a>
+<a href="#" id="password_forgotten">Mot de passe oublié ?</a>
 </form>
 
 
@@ -45,6 +45,8 @@
 
 </nav>
 
+<nav id="recherche_menu">
+
 <select name="categories" id="categories" >
 <option value="null">Catégories</option>
 <option value="legume">Legume</option>
@@ -57,9 +59,9 @@
 <option value="bourgogne">Bourgogne</option>
 </select>
 
-<input type="search" name="recherche_ville" placeholder="Villes ou codes postaux">
+<input type="search" id="recherche_ville" placeholder="Villes ou codes postaux">
 
-<input type="search" name="rechercher"><br>
+<input type="search" id="rechercher"><br>
 
 <select name="nbAnnoncePage" id="nbAnnoncePage" >
 <option value="10">10</option>
@@ -67,28 +69,70 @@
 <option value="30">30</option>
 </select>
 
+</nav>
+
 </div>
 
-<div class="left_section" id="categories_section" >
+<div id="categories_section" >
 <h4>Info Catégories</h4>
+<li>Fruit
 <ul>
-    <li>Légumes</li>
-    <li>Fruit</li>
+    <li><a href="#">Pommes</a></li>
+    <li><a href="#">Poires</a></li>
 </ul>
+</li>
 
-<h4>Recettes</h4>
+<li>Légumes
 <ul>
-    <li>Recettes du moment</li>
-    <li>Recettes Fruités</li>
+    <li><a href="#">Carottes</a></li>
+    <li><a href="#">Haricots verts</a></li>
 </ul>
+</li>
+
+
 </div>
 
-<div class="right_section" id="annonce_section" >
+<div id="annonce_section" >
 
 <table id="table_annonce">
 <tr>
 <td>Date</td>
-<td rowspan="4"><a href="#"> <img src="#" alt="annonce" height="100" width="300" ></a></td>
+<td rowspan="4"><a href="#"> <img src="#" alt="photo de l'annonce" height="100" width="300" ></a></td>
+<td>Nom de l'annonce</td>
+</tr>
+<tr>
+<td rowspan="3"></td>
+<td>Catégories</td>
+</tr>
+<tr>
+<td>Localisation</td>
+</tr>
+<tr>
+<td>Prix</td>
+</tr>
+
+</table><table id="table_annonce">
+<tr>
+<td>Date</td>
+<td rowspan="4"><a href="#"> <img src="#" alt="photo de l'annonce" height="100" width="300" ></a></td>
+<td>Nom de l'annonce</td>
+</tr>
+<tr>
+<td rowspan="3"></td>
+<td>Catégories</td>
+</tr>
+<tr>
+<td>Localisation</td>
+</tr>
+<tr>
+<td>Prix</td>
+</tr>
+</table>
+
+<table id="table_annonce">
+<tr>
+<td>Date</td>
+<td rowspan="4"><a href="#"> <img src="#" alt="photo de l'annonce" height="100" width="300" ></a></td>
 <td>Nom de l'annonce</td>
 </tr>
 <tr>
@@ -109,14 +153,14 @@
 
 <footer>
 
-<div id="nav_foot">
+<div id="nav_footer">
 
 <a href="#">Aide</a>
 <a href="#">FAQ</a>
 <a href="#">Conditions générales</a>
 <a href="#">Newsletter</a>
-<a href="#"><img src="images/facebookLogo.png" height="30" width="30" alt="Bouton facebook"></a>
-<a href="#"><img src="images/twitterLogo.png" height="30" width="30" alt="Bouton twitter"></a>
+<a href="#"><img src="images/facebookLogo.png" height="30" width="30" alt="Bouton facebook" id="bouton_facebook"></a>
+<a href="#"><img src="images/twitterLogo.png" height="30" width="30" alt="Bouton twitter" id="bouton_twitter"></a>
 
 </div>
 
