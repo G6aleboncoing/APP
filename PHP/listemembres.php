@@ -1,7 +1,5 @@
 <!--verouiller aux membres-->
-<?php
-include('configuration.php');
-?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -35,13 +33,7 @@ include('configuration.php');
 	ville: <?php echo $donnees['ville']; ?> <br />
 	detail: <?php echo $donnees['detail']; ?> <br />
    </p>
-<?php
-}
 
-$reponse->closeCursor(); // Termine le traitement de la requête
-
-?>
- 
  <?php include("footer.php"); ?>
 
 </body>
