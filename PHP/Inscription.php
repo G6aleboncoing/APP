@@ -1,4 +1,4 @@
-
+<?php (include"configuration.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +16,8 @@
 
 <?php include("boutonsection.php"); ?>
 
-<?php 
-//permet de se connecter a la bdd
-include("configuration.php"); ?>
-
 <?php
-$form=false;
+
 //vérifier si les champs sont remplis-si le formulaire a été envoyé
 if(	isset($_POST['nom'])!='' && 
 	isset($_POST['prenom'])!='' && 
@@ -53,8 +49,12 @@ if(	isset($_POST['nom'])!='' &&
 		if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email'])){
 	
 			echo'verification format mail';		
+			$email=$_POST['email'];
+			$req=$bdd->query("SELECT * FROM membres where email = '$email'"); 
+			$data=$req->fetch(); 
+	
 			//vérifier unicité de l'adresse ici
-			if(true){
+			if($data['email'] == ""){
 			
 				echo'echapemment des variables';
 				// Alors on echappe les variables pour pouvoir les mettre en requete sql
@@ -87,7 +87,6 @@ if(	isset($_POST['nom'])!='' &&
 					$i->execute();
 		
 					echo'envoyé';
-				$form=true;
 				}
 			}else{
 			//si adresse déjà utilisé
@@ -103,10 +102,12 @@ if(	isset($_POST['nom'])!='' &&
 	echo'Veuillez remplir tout les champs';
 	}
 } else {	
-$form = false;
+$_POST['validatei'] ='pasok';
+
 }
 
-if ($form=true )
+// if($_POST['validatei'] != 'ok')
+	if(true)
 {
 ?>	
 <div class="content">
@@ -132,6 +133,8 @@ if ($form=true )
 
 	<label for="detail">Informations personnelles</label>
 	<input type="text" name="detail" id="detail" value=""/>	<br />
+	
+	<input type="hidden" name="validate" id="validate" value="ok"/>
 
 	<input type="submit" name="envoi" value="Envoyer"/>
 

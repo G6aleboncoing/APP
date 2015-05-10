@@ -20,18 +20,24 @@ include('configuration.php');
  
   <?php include("recherche.php"); ?>
 
-<div class="left_section" id="categories_section" >
+<div id="categories_section" >
 <h4>Info Catégories</h4>
+<hr>
+<li>Fruit
 <ul>
-    <li>Légumes</li>
-    <li>Fruit</li>
+    <li><a href="#">Pommes</a></li>
+    <li><a href="#">Poires</a></li>
 </ul>
+</li>
 
-<h4>Recettes</h4>
+<li>Légumes
 <ul>
-    <li>Recettes du moment</li>
-    <li>Recettes Fruités</li>
+    <li><a href="#">Carottes</a></li>
+    <li><a href="#">Haricots verts</a></li>
 </ul>
+</li>
+
+
 </div>
 
 <div class="right_section" id="annonce_section" >
