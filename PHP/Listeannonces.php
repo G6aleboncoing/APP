@@ -1,6 +1,4 @@
-<?php
-include('configuration.php');
-?>
+<?php (include"configuration.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,7 +17,7 @@ include('configuration.php');
 	 <?php include("boutonsection.php"); ?>
 
 	<?php 
-	// On récupère tout le contenu de la table jeux_video
+	// On récupère tout le contenu de la table annonces
 
 	$reponse = $bdd->query('SELECT * FROM annonces');
 

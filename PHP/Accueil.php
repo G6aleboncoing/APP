@@ -20,7 +20,7 @@ include('configuration.php');
  
   <?php include("recherche.php"); ?>
 
-<div class="left_section" id="categories_section" >
+<div  id="categories_section" >
 <h4>Info Catégories</h4>
 <ul>
     <li>Légumes</li>

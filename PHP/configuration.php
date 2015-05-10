@@ -1,4 +1,5 @@
 <?php
+session_start();
 $BDD_hote = 'localhost';
 $BDD_bd = 'leboncoing';
 $BDD_utilisateur = 'root';
