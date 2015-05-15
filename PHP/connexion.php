@@ -24,32 +24,35 @@ if(	isset($_POST['email'])!='' &&
 	isset($_POST['passe'])!='' ) 
 	{
 		if(!empty($_POST['email']) 	
-		&& !empty($_POST['passe'])
+		&& !empty($_POST['passe']))
 		{
 			$_POST['email'] = stripslashes(trim($_POST['email']));
 			$_POST['passe'] = stripslashes(trim($_POST['passe']));
 						
-
+$i=0;
 			$email=$_POST['email'];
+			$passe=sha1($_POST['passe']);
 			$req=$bdd->query("SELECT * FROM membres where email = '$email'"); 
 			$data=$req->fetch(); 
-			$reponse->closeCursor(); 
-			//vérifier si l'email est enregistré
-			if($data['email'] == "1"){
-				$req=$bdd->query("SELECT mot_passe FROM membres where email = '$email'"); 
-				$data=$req->fetch(); 
-				$reponse->closeCursor(); 
-				if($data['mot_passe']==$_POST['passe']){
-					//initié la session
+			if($data['email'] != ""){
+					
+				$req->closeCursor(); 	
+				echo'Verifions le mot de passe ';		
+				$req2=$bdd->query("SELECT mot_passe FROM membres where email = '$email'"); 
+				$data2=$req2->fetch(); 
+				if($data2['mot_passe']== "$passe")	{
+					echo'bon mot de passe ';
+					$_SESSION['email']= $data['email'];
+					$_SESSION['passe']= $data['mot_passe'];
+					$req2->closeCursor(); 	
+					
+				} else {
+					echo'mauvais mdp';				
+					$req2->closeCursor(); 
 				}
-				else {
-				echo'le mot de passe est incorrect';
-				}
-			
 			}else{
-			echo'inscrivez vous avant de vous connecter ;) ';
+			echo'inscrivez vous avant de vous connecter ;) ';			$req->closeCursor(); 
 			}
-			
 		} 
 		else{
 		echo'remplissez les deux champs, petit malin ';

@@ -4,7 +4,6 @@ $('#cssmenu').prepend('<div id="bg-one"></div><div id="bg-two"></div><div id="bg
 });
 } )( jQuery );
 
-
  
  
 (function($){  

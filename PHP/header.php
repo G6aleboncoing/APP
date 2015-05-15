@@ -1,16 +1,20 @@
-
 <header id="headermain">
 
-<!--choix de la langue
 <select name="langue" id="langue_select" >
 <option value="null">Langue</option>
 <option value="français">Français</option>
 <option value="anglais">Anglais</option>
 </select>
-
--->
-	
-<form id="password_section" action="connexion.php" method="post">
+<?php
+if(	isset($_SESSION['email'])!='' && 
+	isset($_SESSION['passe'])!='' ) 
+	{
+		echo $_SESSION['email'];
+	}else 
+	{
+		echo'
+	<html>
+	<form action="connexion.php" method="post">
 
 	<label for="email">Adresse email</label>
 	<input type="text" name="email" value=""/>
@@ -20,7 +24,11 @@
 
 	<input type="submit" value="Se connecter"/>
 
-</form>
+	</form>';
+
+	}
+	?>
+
 <form>
 <a href="Inscription.php" id="password_forgotten">Créez votre compte</a>
 <a href="#" id="password_forgotten">Mot de passe oublié ?</a>

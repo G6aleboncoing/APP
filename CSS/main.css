@@ -1,4 +1,4 @@
-/* page d'acceuil */
+﻿/* page d'acceuil */
 
 
 html {
@@ -371,6 +371,15 @@ footer a{
 margin:2px;
 
 }
+input[type="submit"], input[type="button"]	{
+	background-color: #CDF0F0;
+	color: black;
+	border: 1px outset black;
+}
 
+input[type="text"]:focus, input[type="password"]:focus {
+	background-color: #CDF0F0;
+	color: black;
+}
 
 
