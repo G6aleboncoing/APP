@@ -21,36 +21,33 @@ include("configuration.php"); ?>
 
 <?php
 
-if(	isset($_SESSION['email'])!='' ) 
+if(	isset($_SESSION['ID_membre'])!='' ) 
 	{		
 		echo'bonjour';
 		//vérifier si les champs sont remplis-si le formulaire a été envoyé
 		if(isset($_POST)!='' && 
 		isset($_POST['titre'])!='' && 
-		isset($_POST['description'])!='' && 
 		isset($_POST['typ'])!='' && 
 		isset($_POST['genre'])!='' && 
 		isset($_POST['variete'])!='' &&
 		isset($_POST['prix'])!='' )
 		{
-		
+		echo'rempli';
 			if(!empty($_POST['titre']) 
-			&& !empty($_POST['description'])
 			&& !empty($_POST['typ'])
 			&& !empty($_POST['genre'])
 			&& !empty($_POST['variete'])
 			&& !empty($_POST['prix']))
 			{
 				
-				echo'rempli';
+				echo'rempli2';
 						
 				//Alors on enleve lechappement 
 
-				$_POST['titre'] = stripslashes(trim($_POST['titre']));
-				$_POST['description'] = stripslashes(trim($_POST['description']));			
-				$_POST['typ'] = stripslashes(trim($_POST['typ']));
-				$_POST['genre'] = stripslashes(trim($_POST['genre']));
-				$_POST['variete'] = stripslashes(trim($_POST['variete']));
+				$_POST['titre'] = stripslashes(trim($_POST['titre']));	
+				$typ_Array = $_POST['typ'];
+				$genre_Array = $_POST['genre'];
+				$variete_Array = $_POST['variete'];
 				$_POST['prix'] = stripslashes(trim($_POST['prix']));
 							
 				echo'echappemment';
@@ -58,16 +55,17 @@ if(	isset($_SESSION['email'])!='' )
 				
 				$id_annonce = '';
 				$titre = $_POST['titre'];
-				$description = $_POST['description'];
-				$typ= $_POST['typ'];
-				$genre = $_POST['genre'];
-				$variete= $_POST['variete'];
-				$prix = $_POST['prix'];
+				$typ=  implode(",", $typ_Array);
+				$genre =  implode(",", $genre_Array);
+				$variete=  implode(",", $variete_Array);
+				$prix = $_POST['prix'];				
+				$id_membre = $_SESSION['ID_membre'];
+				
 				
 				//préparer connexion bdd
 				if($i = $bdd->prepare("
-				INSERT INTO annonces (id_annonce,titre,description,typ,genre,variete, prix)
-				VALUES (:id_annonce,:titre,:description,:typ,:genre,:variete,:prix)")
+				INSERT INTO annonces (id_annonce,titre,typ,genre,variete, prix,id_membre)
+				VALUES (:id_annonce,:titre,:typ,:genre,:variete,:prix,:id_membre)")
 				) 
 				{	
 				
@@ -75,37 +73,37 @@ if(	isset($_SESSION['email'])!='' )
 					//envoi base de données
 					$i->bindParam(':id_annonce', $id_annonce);
 					$i->bindParam(':titre', $titre);
-					$i->bindParam(':description', $description);
 					$i->bindParam(':typ', $typ);
 					$i->bindParam(':genre', $genre);
 					$i->bindParam(':variete', $variete);
-					$i->bindParam(':prix', $prix);
+					$i->bindParam(':prix', $prix);					
+					$i->bindParam(':id_membre', $id_membre);
 					$i->execute();
 		
 					echo'envoyé';
 				}
 			}
 		}else 
-		{	$form = true;
+		{	echo'non rempli';;
 		}
 	} else 
 	{
-		echo '</br>vous devez être connecter pour pouvoir poser une annonce';
+		
 	}
 	
 if (isset($_SESSION['email'])!='')
 	{
 ?>	
 
-
+</br>
 		<div class="creerannonce">
 		<form method="post" action="creerannonce.php">
 		
 		<label for="titre">Titre</label>
 		<input type="text" name="titre" id="titre" value=""/><br />
 
-		<p>	<label for="Type">Type</label>
-		<select name="Type">
+		<p>	<label for="Typ">Type</label>
+		<select name="typ[]" multiple size="3">
 			<option value="Null">Type</option>
 			<option value="Legume"" selected="selected">Legume</option>
 			<option value="Fruit">Fruit</option>
@@ -113,7 +111,7 @@ if (isset($_SESSION['email'])!='')
 		</p>
 
 		<p>	<label for="Genre">Genre</label>
-		<select name="Genre">
+		<select name="genre[]"  multiple size="3">
 			<option value="Null" ""selected="selected">Genre</option>
 			<option value="Pomme">Pomme</option>
 			<option value="Poire">Poire</option>
@@ -121,7 +119,7 @@ if (isset($_SESSION['email'])!='')
 		</select>
 		</p>
 		<p>	<label for="Variete">Variete</label>
-		<select name="Variete">
+		<select name="variete[]" multiple size="3">
 			<option value="Null" ""selected="selected">Variete</option>
 			<option value="Gala">Gala</option>
 			<option value="Royal">Royal</option>
@@ -142,7 +140,8 @@ if (isset($_SESSION['email'])!='')
 <?php
 	} else
 	{
-		echo '</br>vous devez être connecter pour poser une annonce </br>';
+		echo '</br>vous devez être connecter pour poser une annonce </br>
+		<a href="Inscription.php" id="password_forgotten">laissez vous guider ;)</a></br>';
 	}
 ?>
 

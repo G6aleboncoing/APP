@@ -5,8 +5,12 @@
 <ul>
 <li class="active"><a href="Listeannonces.php">Liste des annonces</a></li>
 <li><a href="recherche.php">Faire une recherche</a></li>
-<li><a href="">Mes Alertes</a></li>
-<li><a href="compte.php">Mon Compte</a></li>
+
+<?php if (isset($_SESSION['email'])!=''){
+	echo '<li><a href="compte.php">Mon Compte</a></li>
+			<li><a href="">Mes Alertes</a></li>';
+}?>
+
 <li><a href="creerannonce.php">Déposer une annonce</a></li>
 <li class="last"><a href="listemembres.php">Liste des membres</a></li>
 

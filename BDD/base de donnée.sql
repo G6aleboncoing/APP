@@ -18,6 +18,8 @@ CREATE TABLE `annonces` (
 	`genre` varchar(30) NOT NULL,
 	`variete` varchar(30) NOT NULL,
 	`prix` varchar(30) NOT NULL,
+	`id_membre` int(11) NOT NULL,
+
 	
 	PRIMARY KEY (`id_annonce`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

@@ -41,9 +41,14 @@ $i=0;
 				$req2=$bdd->query("SELECT mot_passe FROM membres where email = '$email'"); 
 				$data2=$req2->fetch(); 
 				if($data2['mot_passe']== "$passe")	{
-					echo'bon mot de passe ';
+					echo'bon mot de passe ';		
 					$_SESSION['email']= $data['email'];
 					$_SESSION['passe']= $data['mot_passe'];
+					$_SESSION['ID_membre']= $data['id_membre'];
+					$_SESSION['nom']= $data['nom'];
+					$_SESSION['prenom']= $data['prenom'];
+					$_SESSION['Pays']= $data['pays'];
+					$_SESSION['ville']= $data['ville'];
 					$req2->closeCursor(); 	
 					
 				} else {

@@ -19,8 +19,12 @@ include('configuration.php');
  <?php include("boutonsection.php"); ?>
  
  <?php echo '</br> bonjour ';
- echo $_SESSION['email'];
- echo'test2 </br>';
+ echo 'email:',$_SESSION['email'],'</br>',
+ 'nom:',	$_SESSION['nom'],'</br>',
+ 	'prenom:',$_SESSION['prenom'],'</br>',
+ 'pays:',	$_SESSION['Pays'],'</br>',
+	'ville:',$_SESSION['ville'];
+ echo'test </br>';
  ?>
 
  <?php include("footer.php"); ?>
