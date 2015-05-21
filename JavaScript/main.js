@@ -1,13 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 19d8426... New CSS + JS
 ( function( $ ) {
 $( document ).ready(function() {
 $('#cssmenu').prepend('<div id="bg-one"></div><div id="bg-two"></div><div id="bg-three"></div><div id="bg-four"></div>');
 });
 } )( jQuery );
 
+<<<<<<< HEAD
  
 >>>>>>> origin/master
+=======
+
+ 
+>>>>>>> parent of 19d8426... New CSS + JS
  
 (function($){  
   setInterval(function(){  
@@ -17,6 +25,7 @@ $('#cssmenu').prepend('<div id="bg-one"></div><div id="bg-two"></div><div id="bg
   }, 4500);   
 <<<<<<< HEAD
 })(jQuery);
+<<<<<<< HEAD
 
 $(document).ready(function(){
     $("#login_link").click(function(){
@@ -48,3 +57,5 @@ else
 =======
 })(jQuery);
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 19d8426... New CSS + JS
