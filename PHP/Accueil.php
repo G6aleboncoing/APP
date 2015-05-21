@@ -17,8 +17,6 @@ include('configuration.php');
  <?php include("header.php"); ?>
 
  <?php include("boutonsection.php"); ?>
- 
-  <?php include("recherche.php"); ?>
 
 <div id="categories_section" >
 <h4>Info Catégories</h4>

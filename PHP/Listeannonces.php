@@ -26,7 +26,7 @@
 ?>
     <p>
     <strong>annonces</strong> : <?php echo $donnees['titre']; ?><br />
-    Description:<?php echo $donnees['description']; ?> <br />
+    Type:<?php echo $donnees['typ']; ?> <br />
 	Genre: <?php echo $donnees['genre']; ?> <br />
     Variete: <?php echo $donnees['variete']; ?> <br />
 	Prix: <?php echo $donnees['prix']; ?> <br />
