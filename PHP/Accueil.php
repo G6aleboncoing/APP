@@ -1,6 +1,5 @@
-<?php
-include('configuration.php');
-?>
+<?php 
+(include"configuration.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,12 +12,20 @@ include('configuration.php');
 </head>
 
 <body>
-
  <?php include("header.php"); ?>
 
- <?php include("boutonsection.php"); ?>
+<div id="body_main">
+ 
+<div id="slideshow">
+<ul>
+<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+</ul>
+</div>
 
-<div id="categories_section" >
+<div id="categories_section" class="white_background">
 <h4>Info Catégories</h4>
 <hr>
 <li>Fruit
@@ -38,7 +45,7 @@ include('configuration.php');
 
 </div>
 
-<div class="right_section" id="annonce_section" >
+<div class="annonce_section" id="annonce_section" >
 
 <table id="table_annonce">
 <tr>
@@ -61,7 +68,7 @@ include('configuration.php');
 </div>
 
 <hr>
-
+</div>
  <?php include("footer.php"); ?>
 
 </body>

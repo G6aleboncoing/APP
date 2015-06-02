@@ -16,16 +16,26 @@ include('configuration.php');
 
  <?php include("header.php"); ?>
 
- <?php include("boutonsection.php"); ?>
- 
- <?php echo '</br> bonjour ';
- echo 'email:',$_SESSION['email'],'</br>',
- 'nom:',	$_SESSION['nom'],'</br>',
- 	'prenom:',$_SESSION['prenom'],'</br>',
- 'pays:',	$_SESSION['Pays'],'</br>',
-	'ville:',$_SESSION['ville'];
- echo'test </br>';
+<div id="body_main">
+	<!--on récupère dans les $_sessions les données de l'utilisateur à afficher dans son profil -->
+	<!--ajouter l'image-->
+	<?php 
+	echo '</br> bonjour </br>';
+	if (isset($_SESSION['email'])!='')//on ne vérifie que pour le mail en partant du principe que si ce session est fait, les autres le sont aussi. Dans l'absolu on SAIT qu'il faudrait tout vérifier
+	{
+		echo 'email:',$_SESSION['email'],'</br>',
+		'nom:',	$_SESSION['nom'],'</br>',
+		'prenom:',$_SESSION['prenom'],'</br>',
+		'pays:',$_SESSION['Pays'],'</br>',
+		'ville:',$_SESSION['ville'],'</br>',
+		'<a href="modifiercompte.php" id="modifinfo">Modifier compte</a>';
+	} else
+	{ echo 'connectez vous sur la page d\'accueil :<a href="Accueil.php" id="accueil">Accueil</a> </br>';
+		
+	}
  ?>
+
+</div>
 
  <?php include("footer.php"); ?>
 

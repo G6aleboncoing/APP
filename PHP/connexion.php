@@ -12,36 +12,43 @@
 
 <body>
 
-<?php include("header.php"); ?> 
+<!-- il n'y a ici que le traitement des donnéees reçu, en effet, le formulaire se trouve dans le header-->
 
-<?php include("boutonsection.php"); ?>
-
+	<?php include("header.php"); ?> 
+	
+	
+<div id="body_main">
 <?php
 
-
-//vérifier si les champs sont remplis-si le formulaire a été envoyé
+//On vérifie si les variables sont définies
 if(	isset($_POST['email'])!='' && 
 	isset($_POST['passe'])!='' ) 
 	{
+		//On vérifie que les variables soient remplies
 		if(!empty($_POST['email']) 	
 		&& !empty($_POST['passe']))
 		{
+			//supprime les anti slash dans les variables pour éviter certaines injections
 			$_POST['email'] = stripslashes(trim($_POST['email']));
 			$_POST['passe'] = stripslashes(trim($_POST['passe']));
 						
-$i=0;
+			//on créer des variables que l'on peut envoyer dans nos requêtes et on hashe le mot de passe , cryptage plus puissant à venir
 			$email=$_POST['email'];
 			$passe=sha1($_POST['passe']);
+			
+			//on lance une requête pour vérifier que le mail existe ie que la personne c'est inscrite
 			$req=$bdd->query("SELECT * FROM membres where email = '$email'"); 
 			$data=$req->fetch(); 
 			if($data['email'] != ""){
 					
 				$req->closeCursor(); 	
-				echo'Verifions le mot de passe ';		
+				
+				//on vérifie que le mot de passe est bon
 				$req2=$bdd->query("SELECT mot_passe FROM membres where email = '$email'"); 
 				$data2=$req2->fetch(); 
-				if($data2['mot_passe']== "$passe")	{
-					echo'bon mot de passe ';		
+				if($data2['mot_passe']== "$passe")	
+				{
+					//si le mot de passe est bon, on créer à partir des données récupérées nos variables de session.
 					$_SESSION['email']= $data['email'];
 					$_SESSION['passe']= $data['mot_passe'];
 					$_SESSION['ID_membre']= $data['id_membre'];
@@ -49,17 +56,36 @@ $i=0;
 					$_SESSION['prenom']= $data['prenom'];
 					$_SESSION['Pays']= $data['pays'];
 					$_SESSION['ville']= $data['ville'];
+					$_SESSION['detail']= $data['detail'];
+					$_SESSION['admin']= $data['admin'];
 					$req2->closeCursor(); 	
+					echo $_SESSION['email'],'</br>';
 					
-				} else {
+					//On redirige vers la page d'accueil
+					header ('Location: Accueil.php');
+				
+				} else 
+				{
+					//bah le mot de passe est pas bon qu'ces que tu veux que je te dise
 					echo'mauvais mdp';				
 					$req2->closeCursor(); 
 				}
-			}else{
-			echo'inscrivez vous avant de vous connecter ;) ';			$req->closeCursor(); 
+			}else
+			{
+				//bah il est pas inscrit , qu'il s'inscrive !
+				echo'inscrivez vous avant de vous connecter ;) ';
+				$req->closeCursor(); 
 			}
-		} 
-		else{
-		echo'remplissez les deux champs, petit malin ';
+		} else
+		{
+			echo'remplissez les deux champs, petit malin ';
+			//bah oui, on va pas le faire rentrer juste avec l'adresse ou le mot de passe, des oublis ça arrive à tout le monde !
 		}
 	}
+	?>
+
+</div>
+ <?php include("footer.php"); ?>
+
+</body>
+</html>

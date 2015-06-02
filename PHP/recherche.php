@@ -14,111 +14,64 @@
 
 <?php include("header.php"); ?> 
 
-<?php include("boutonsection.php"); ?>
+<?php
+echo $_SESSION['email'];
+?>
+
+<div id="body_main">
+	<form method="post" action="recherche.php">
+		<label for="query">Entrer votre recherche </label>
+		<input type="search" name="submit" maxlength="50" size="30" placeholder="Rechercher">
+		<input type="submit" value="submit">
+		</form>
+
 
 <?php
-if(isset($_POST)!='' && 
-	isset($_POST['titre'])!='' && 
-	isset($_POST['typ'])!='' && 
-	isset($_POST['genre'])!='' && 
-	isset($_POST['variete'])!='' &&
-	isset($_POST['prix'])!='' )
+if(	isset($_POST['submit'])!='')
 	{
-				
-			
-			echo'envoi intermediaire';
-			
-		$_POST['titre'] = stripslashes(trim($_POST['titre']));		
-		$_POST['typ'] = stripslashes(trim($_POST['typ']));
-		$_POST['genre'] = stripslashes(trim($_POST['genre']));			
-		$_POST['variete'] = stripslashes(trim($_POST['variete']));
-		$_POST['prix'] = stripslashes(trim($_POST['prix']));
-						
-		echo'echappemment';
+		$submit=$_POST['submit'];
+		if(!empty($_POST['submit']))
+		{ $reponse = $bdd->query("SELECT * FROM annonces WHERE titre LIKE '%$submit%' OR typ LIKE '%$submit%' OR genre LIKE '%$submit%'  OR variete LIKE '%$submit%' ");
 
-		
-		$req = $bdd->prepare('SELECT * FROM annonces WHERE titre = ? OR typ= ? OR genre = ? OR variete = ? Or prix = ?');
-		$req->execute(array($_POST['titre'], $_POST['typ'] , $_POST['genre'], $_POST['variete'] , $_POST['prix']  ));
-		echo 'test';
-		while ($donnees = $reponse->fetch())
-		{
-			?>
-			    <p>
-    <strong>annonces</strong> : <?php echo $donnees['titre']; ?><br />
-    Description:<?php echo $donnees['description']; ?> <br />
-	Genre: <?php echo $donnees['genre']; ?> <br />
-    Variete: <?php echo $donnees['variete']; ?> <br />
-	Prix: <?php echo $donnees['prix']; ?> <br />
-   </p>
-   <?php
-		$reponse->closeCursor();
-				echo'hourra';
+		  $reponse3 = $bdd->query("SELECT * FROM membres WHERE nom LIKE '%$submit%' OR prenom LIKE '%$submit%' OR ville LIKE '%$submit%'  OR detail LIKE '%$submit%'");
+
+			// On affiche chaque entrée une à une
+			echo "Annonce correspondante:" ;
+			while ($donnees = $reponse->fetch())
+			{ $idmembre=$donnees['id_membre'];
+				$reponse2 = $bdd->query("SELECT * FROM membres WHERE id_membre='$idmembre'");
+				while ($donnees2 = $reponse2->fetch())
+				{
+					?>
+					<p>
+					<strong>Annonce</strong> : <?php echo $donnees['titre']; ?><br />
+					<strong>Le possesseur de cette annonce est :</strong> <?php echo 'm(me) ',$donnees2['nom'],' ',$donnees2['prenom']?> <br />
+					<strong>Type:</strong> <?php echo $donnees['typ']; ?> <strong>Genre:</strong> <?php echo $donnees['genre']; ?> <strong>Variétés:</strong> <?php echo $donnees['variete']; ?> <br />
+					<strong>Prix:</strong> <?php echo $donnees['prix']; ?> euros <br />
+					<br />
+					</p>
+<?php			}
+			}
+			
+			echo "<br> Membres:" ;
+			while ($donnees3 = $reponse3->fetch())
+			{
+				?>
+				<p>
+				<strong>Nom:</strong> <?php echo $donnees2['nom']; ?>  <strong>Prenom:</strong> <?php echo $donnees2['prenom']; ?> <br />
+				<strong>Ville:</strong> <?php echo $donnees2['ville']; ?> <br />
+				<strong>Detail:</strong> <?php echo $donnees2['detail']; ?> 
+				</p>
+				<?php
+			}
+			$reponse->closeCursor(); // Termine le traitement de la requête
 		}
+		else echo "veuillez entrer une recherche";
 	}
-?>
-<div class="recherche">
-<form method="post" action="recherche.php">
-		
-	<label for="titre">Titre</label>
-	<input type="text" name="titre" id="titre" value=""/><br />
-
-	<p>	<label for="Type">Type</label>
-		<select name="Type">
-			<option value="Null">Type</option>
-			<option value="Legume"" selected="selected">Legume</option>
-			<option value="Fruit">Fruit</option>
-		</select>
-	</p>
-
-	<p>	<label for="Genre">Genre</label>
-		<select name="Genre">
-			<option value="Null" ""selected="selected">Genre</option>
-			<option value="Pomme">Pomme</option>
-			<option value="Poire">Poire</option>
-			<!--appeller genre.php ici-->
-		</select>
-	</p>
-	<p>	<label for="Variete">Variete</label>
-		<select name="Variete">
-			<option value="Null" ""selected="selected">Variete</option>
-			<option value="Gala">Gala</option>
-			<option value="Royal">Royal</option>
-			<!--appeller variete.php ici-->
-		</select>
-	</p>
-
-		<!-- s'occuper de la comparaison des prix (> = <)-->
-	<label for="prix">Prix</label>
-	<input type="text" name="prix" id="prix" value=""/><br />
-
-	<input type="submit" name="envoi" value="Envoyer"/>
-
-</form>
+	?>
 	
-</div>
-
-
-
-
-<!--
-<select name="region" id="region" >
-<option value="null">Région</option>
-<option value="ile_de_france">Ile-de-France</option>
-<option value="bourgogne">Bourgogne</option>
-</select>
-
-<input type="search" name="recherche_ville" placeholder="Villes ou codes postaux">
-
-
-<select name="nbAnnoncePage" id="nbAnnoncePage" >
-<option value="10">10</option>
-<option value="20">20</option>
-<option value="30">30</option>
-</select>
--->
-
-
-<?php include("footer.php"); ?> 
-
+	</br>
+	</div>
+ <?php include("footer.php"); ?>
 </body>
 </html>

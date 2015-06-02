@@ -9,6 +9,12 @@
 <title>LeBonCoing</title>
 </head>
     <body>
+	
+	
+	<?php include("header.php"); ?>
+	
+	<div id="body_main">
+	
    	 <ul>
    		 <li><p style="color:red">Déposer une annonce</p>
    			 <ul>
@@ -43,5 +49,11 @@
    				 <li style="font-family:Futura">Mes données personnelle:</li>
    			 </ul>
         	</li>
-    </body>
+    
+	
+	</div>
+
+	<?php include("footer.php"); ?>
+
+	</body>
 </html>

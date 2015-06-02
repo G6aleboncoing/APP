@@ -7,6 +7,7 @@ CREATE TABLE `membres` (
 	`pays` varchar(45) NOT NULL,
 	`ville` varchar(45) NOT NULL,	
 	`detail` varchar(250) NOT NULL,
+	`detail` int(10) NOT NULL,
 	
 	PRIMARY KEY (`id_membre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -14,7 +15,7 @@ CREATE TABLE `membres` (
 CREATE TABLE `annonces` (
 	`id_annonce` int(11) unsigned NOT NULL AUTO_INCREMENT,
 	`titre` varchar(45) NOT NULL,
-	`description` varchar(300) NOT NULL,
+	`typ` varchar(300) NOT NULL,
 	`genre` varchar(30) NOT NULL,
 	`variete` varchar(30) NOT NULL,
 	`prix` varchar(30) NOT NULL,

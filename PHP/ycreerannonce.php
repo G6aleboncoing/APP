@@ -7,79 +7,12 @@
 <link rel="icon" type="image/png" href="images/coing.png" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
-<script src="../JavaScript/jquery.js"></script>
 <title>LeBonCoing</title>
-			<script type='text/javascript'>
-			var xhr = null; 
- 
-			function getXhr(){
-				if(window.XMLHttpRequest) // Firefox et autres
-				   xhr = new XMLHttpRequest(); 
-				else if(window.ActiveXObject){ // Internet Explorer 
-				   try {
-			                xhr = new ActiveXObject("Msxml2.XMLHTTP");
-			            } catch (e) {
-			                xhr = new ActiveXObject("Microsoft.XMLHTTP");
-			            }
-				}
-				else { // XMLHttpRequest non supporté par le navigateur 
-				   alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest..."); 
-				   xhr = false; 
-				} 
-			}
- 
-			/**
-			* Méthode qui sera appelée sur le click du bouton
-			*/
-			function go(){
-				getXhr();
-				// On défini ce qu'on va faire quand on aura la réponse
-				xhr.onreadystatechange = function(){
-					// On ne fait quelque chose que si on a tout reçu et que le serveur est ok
-					if(xhr.readyState == 4 && xhr.status == 200){
-						leselect = xhr.responseText;
-						// On se sert de innerHTML pour rajouter les options a la liste
-						document.getElementById('genre').innerHTML = leselect;
-					}
-				}
- 
-				// Ici on va voir comment faire du post
-				xhr.open("POST","Ajaxespece.php",true);
-				// ne pas oublier ça pour le post
-				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-				// ne pas oublier de poster les arguments
-				// ici, l'id de l'auteur
-				sel = document.getElementById('type');
-				typ = sel.options[sel.selectedIndex].value;
-				xhr.send("typ="+typ);
-				
-				alert ("coucou");//ici c'est la place choisi
-			}
-			function goesp(){
-				getXhr();
-				
-				alert ("coucou");//ici c'est la place choisi
-				// On défini ce qu'on va faire quand on aura la réponse
-				xhr.onreadystatechange = function(){
-					// On ne fait quelque chose que si on a tout reçu et que le serveur est ok
-					if(xhr.readyState == 4 && xhr.status == 200){
-						leselect = xhr.responseText;
-						// On se sert de innerHTML pour rajouter les options a la liste
-						document.getElementById('variete').innerHTML = leselect;
-					}
-				}
- 
-				// Ici on va voir comment faire du post
-				xhr.open("POST","Ajaxvariete.php",true);
-				// ne pas oublier ça pour le post
-				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-				// ne pas oublier de poster les arguments
-				// ici, l'id de l'auteur
-				sel = document.getElementById('genre2');
-				genr = sel.options[sel.selectedIndex].value;
-				xhr.send("genr="+genr);
-			}
-		</script>
+
+<script language="javascript"> function liste(form5) { 
+alert("L\'élément " + (form5.list.selectedIndex + 1)); }
+</SCRIPT> 
+
 
 </head>
 
@@ -88,10 +21,9 @@
 <?php include("header.php"); ?> 
 
 <div id="body_main">
-</br></br></br>
 <?php
 
-if( isset($_SESSION['ID_membre'])!='' ) 
+if(	isset($_SESSION['ID_membre'])!='' ) 
 	{		
 		//vérifier si les champs sont remplis-si le formulaire a été envoyé
 		if(isset($_POST)!='' && 
@@ -114,16 +46,16 @@ if( isset($_SESSION['ID_membre'])!='' )
 
 				$_POST['titre'] = stripslashes(trim($_POST['titre']));	
 				$typ_Array = $_POST['typ'];
-				$genre = stripslashes(trim($_POST['genre']));
-				$variete = stripslashes(trim($_POST['variete']));
+				$genre_Array = $_POST['genre'];
+				$variete_Array = $_POST['variete'];
 				$_POST['description'] = stripslashes(trim($_POST['description']));
 				$_POST['prix'] = stripslashes(trim($_POST['prix']));
 													
 				$id_annonce = '';
 				$titre = $_POST['titre'];
 				$typ=  implode(",", $typ_Array);
-				// $genre =  implode(",", $genre_Array);
-				// $variete=  implode(",", $variete_Array);
+				$genre =  implode(",", $genre_Array);
+				$variete=  implode(",", $variete_Array);
 				$description = $_POST['description'];				
 				$prix = $_POST['prix'];				
 				$id_membre = $_SESSION['ID_membre'];
@@ -142,10 +74,11 @@ if( isset($_SESSION['ID_membre'])!='' )
 					$i->bindParam(':typ', $typ);
 					$i->bindParam(':genre', $genre);
 					$i->bindParam(':variete', $variete);
-					$i->bindParam(':description', $description);
-					$i->bindParam(':prix', $prix);
+					$i->bindParam(':description', $description);				
+					$i->bindParam(':prix', $prix);					
 					$i->bindParam(':id_membre', $id_membre);
 					$i->execute();
+		
 				}
 			}	
 		}else 
@@ -157,16 +90,26 @@ if( isset($_SESSION['ID_membre'])!='' )
 	}
 	
 if (isset($_SESSION['email'])!='')
-	{$test=0;
+	{
 ?>
 
 </br>
 
 
-
+		<script type="text/javascript">
+		function actionAvecUnVraiNom() {
+			
 		
+		alert ("coucou");
+		var genree=0;
+		alert (document.getElementById('formulaire_annonce').value);
+		alert (genree);
+		}
+		</script>
+
 <div id="formulaire_annonce">
 
+<p>Veuillez renseignez les champs ci-dessous</p>
 		<form method="post" action="creerannonce.php">
 		<div class="box15">
 			<h2>Catégories</h2>
@@ -176,8 +119,8 @@ if (isset($_SESSION['email'])!='')
 		
 		<p>	<label for="Typ">Type :</label>
 		<li>
-			<select name="typ[]" id="type" onchange="go()">
-			<option value="">--type--</option>
+			<select name="typ[]" onchange="actionAvecUnVraiNom()">
+			<option value="Null" selected="selected">   </option>
 			<?php
 			//verification blabla
 			$reponse = $bdd->query("SELECT DISTINCT typ FROM `listes` ORDER BY typ ASC ");
@@ -194,32 +137,53 @@ if (isset($_SESSION['email'])!='')
 		</p>
 		
 		
-				<label>genre : </label>
-				<div id="genre">
-				<select name="genre[]" id="genre">
-				<option value="Null" selected="selected">--genre--</option>
+		<p>	<label for="Genre">genre :</label>
+		<li>
+			<select name="genre[]" onchange="actionAvecUnVraiNom()">
+			<option value="Null" selected="selected">   </option>
+			<?php
+			//verification blabla
+			$reponse = $bdd->query("SELECT DISTINCT genre FROM `listes` ORDER BY genre ASC ");
+			while ($donnees = $reponse->fetch())
+			{ 
+				?>
+				<option value="<?php echo $donnees['genre'];?>"> <?php echo $donnees['genre'];?></option>	
 				<?php
+			}
+				?>
+		
+			</select>
+		</li>
+		</p>
+		
+
+		<p>	<label for="Variete">Variété :</label>
+		<li>
+			<select name="variete[]" onchange="actionAvecUnVraiNom()">
+			
+			<?php if ($_POST['genre']=='')
+			{
+				?>
+				<?php
+			
 				//verification blabla
-				$reponse = $bdd->query("SELECT DISTINCT genre FROM `listes` ORDER BY genre ASC ");
+				$reponse = $bdd->query("SELECT DISTINCT variete FROM `listes` ORDER BY variete ASC ");
 				while ($donnees = $reponse->fetch())
 				{ 
 					?>
-					<option value="<?php echo $donnees['genre'];?>"> <?php echo $donnees['genre'];?></option>	
+					<option value="<?php echo $donnees['variete'];?>"> <?php echo $donnees['variete'];?></option>	
 					<?php
 				}
+			}else 
+			{
 				?>
-		
-				</select>
-				</div>
-				
-				
-				<label>Variete</label>
-				<div id='variete' >
-				<select name='variete' id="variete">
-					<option value='-1'>Choisir un genre</option>
-				</select>
-				</div>
-
+				<option value="Null" selected="selected">   </option>
+				<?php
+			}
+			?>
+			</select>
+		</li>
+		</p>
 		
 		</ul>
 		

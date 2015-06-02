@@ -14,8 +14,12 @@
 
 <?php include("header.php"); ?> 
 
-<?php include("boutonsection.php"); ?>
+<div id="body_main">
 
+
+<div id="formulaire_annonce">
+
+	</br>
 <?php
 //Vérifier qu'il n'est pas connecté
 if(	isset($_SESSION['email'])!='' ) 
@@ -23,7 +27,7 @@ if(	isset($_SESSION['email'])!='' )
 	echo "Vous êtes déjà connecter, pourquoi s'inscrire ? ;)";
 	}else 	
 	{
-		//vérifier si les champs sont remplis et si le formulaire a été envoyé
+		//vérifier si les variables sont définis, et remplis 
 		if(	isset($_POST['nom'])!='' && 
 		isset($_POST['prenom'])!='' && 
 		isset($_POST['email'])!='' && 
@@ -40,10 +44,8 @@ if(	isset($_SESSION['email'])!='' )
 			&& !empty($_POST['ville'])
 			&& !empty($_POST['detail']))
 			{
-				//Alors on enleve lechappement 
-
+				//au cas ou, on enlève les anti slash
 		
-				echo'enlever echappement';
 				$_POST['nom'] = stripslashes(trim($_POST['nom']));
 				$_POST['prenom'] = stripslashes(trim($_POST['prenom']));
 				$_POST['email'] = stripslashes(trim($_POST['email']));
@@ -55,8 +57,7 @@ if(	isset($_SESSION['email'])!='' )
 				//vérifier format l'adresse mail ici
 				if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
 				{
-		
-					echo'verification format mail';		
+					
 					$email=$_POST['email'];
 					$req=$bdd->query("SELECT * FROM membres where email = '$email'"); 
 					$data=$req->fetch(); 
@@ -65,7 +66,6 @@ if(	isset($_SESSION['email'])!='' )
 					if($data['email'] == "")
 					{
 				
-						echo'echapemment des variables';
 						// Alors on echappe les variables pour pouvoir les mettre en requete sql
 						$id_membre = '';
 						$nom = $_POST['nom'];
@@ -75,15 +75,14 @@ if(	isset($_SESSION['email'])!='' )
 						$pays = $_POST['pays'];
 						$ville = $_POST['ville'];
 						$detail = $_POST['detail'];
+						$admin = 0;
 			
-						echo'succesfull';
 						//préparer connexion bdd
 						if($i = $bdd->prepare("
-							INSERT INTO membres (id_membre,nom,prenom,email,mot_passe, pays, ville, detail)
-							VALUES (:id_membre,:nom,:prenom,:email,:mot_passe,:pays,:ville,:detail)")) 
+							INSERT INTO membres (id_membre,nom,prenom,email,mot_passe, pays, ville, detail,admin)
+							VALUES (:id_membre,:nom,:prenom,:email,:mot_passe,:pays,:ville,:detail,:admin)")) 
 						{	
-				
-							echo'connexion';
+					
 							//envoi base de données
 							$i->bindParam(':id_membre', $id_membre);
 							$i->bindParam(':nom', $nom);
@@ -93,12 +92,25 @@ if(	isset($_SESSION['email'])!='' )
 							$i->bindParam(':pays', $pays);
 							$i->bindParam(':ville', $ville);
 							$i->bindParam(':detail', $detail);
+							$i->bindParam(':admin', $admin);
 							$i->execute();
-				
-							echo'envoyé';
-							$_SESSION['email']= $data['email'];
-							$_SESSION['passe']= $data['mot_passe'];
+
+							
+							$req=$bdd->query("SELECT * FROM membres where email = '$email'"); 
+							$data=$req->fetch(); 
+														
+								$_SESSION['email']= $data['email'];
+								$_SESSION['passe']= $data['mot_passe'];
+								$_SESSION['ID_membre']= $data['id_membre'];
+								$_SESSION['nom']= $data['nom'];
+								$_SESSION['prenom']= $data['prenom'];
+								$_SESSION['Pays']= $data['pays'];
+								$_SESSION['ville']= $data['ville'];
+								$_SESSION['detail']= $data['detail'];
+								$_SESSION['admin']= $data['admin'];
+							$req->closeCursor(); 
 						}
+						$i->closeCursor(); 
 					}else
 					{	
 						//si adresse déjà utilisé
@@ -113,33 +125,29 @@ if(	isset($_SESSION['email'])!='' )
 				} 	
 			} else 
 			{
-		
+				//il a pas du tout remplir
 				echo'Veuillez remplir tout les champs';
 			}
-		} else 
-		{	
-			$_POST['validatei'] ='pasok';
-
-		}
+		} 
 	}
-
-// if($_POST['validatei'] != 'ok')
+//Si il n'est pas connecté, et donc pas inscrit, alors on l'autorise :p
 if(	isset($_SESSION['email'])=='' ) 
 	{
 ?>		
 		</br>
+		
 		<div class="content">
 		<form method="post" action="inscription.php">
-		
+		<ul>
 		<label for="nom">Nom</label>
-		<input type="text" name="nom" id="nom" value=""/><br />
-	
+		<li><input type="text" name="nom" id="nom" value=""/><br /></li>
+		
 		<label for="prenom">Prenom</label>
-		<input type="text" name="prenom" id="prenom" value=""/><br />
-
+		<li><input type="text" name="prenom" id="prenom" value=""/><br /></li>
+		
 		<label for="email">Adresse email</label>
 		<input type="text" name="email" id="email" value=""/><br />
-
+		
 		<label for="passe">Mot de passe</label>
 		<input type="password" name="passe" id="passe" value=""/><br />
 
@@ -151,21 +159,24 @@ if(	isset($_SESSION['email'])=='' )
 
 		<label for="detail">Informations personnelles</label>
 		<input type="text" name="detail" id="detail" value=""/>	<br />
-	
+		
 		<input type="hidden" name="validate" id="validate" value="ok"/>
-
+		
 		<input type="submit" name="envoi" value="Envoyer"/>
-
+		</ul>
 		</form>
 	
 		</div>
+		
 <?php
 	} else
 	{
 		echo'vous êtes déjà inscrit(e)';
 	}
 ?>
+</div>
 
+</div>
 
 <?php include("footer.php"); ?> 
 
