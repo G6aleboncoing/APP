@@ -15,7 +15,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $("#close_boutton").click(function(){
+    $("#close_button").click(function(){
         $("#password_box").css("display","none");
 
     });
@@ -38,6 +38,7 @@ else
 $(document).ready(function(){
     $(".li_1").click(function(){    
 		$(".li_2").slideToggle("slow");
+		$("#help_section ul p").slideUp("slow");
 
     });
 });
