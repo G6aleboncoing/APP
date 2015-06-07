@@ -21,6 +21,7 @@ $(document).ready(function(){
     });
 });
 
+
 $(window).scroll(function(){
 	
 	var body = $(document);
@@ -50,4 +51,12 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $(".view_number").click(function(){
+        $("#view_number_1").css("display","none");
+		$("#view_number_2").css("display","block");
+		$(".view_number").css("cursor","default");
+
+    });
+});
 

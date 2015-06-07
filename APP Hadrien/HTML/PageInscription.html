@@ -39,7 +39,7 @@
 
 <div id="password_box">
 <form id="password_section">
-<img src="#" id="close_boutton" class="float_right" alt="Bouton de fermeture"  title="Accueil" >
+<img src="images/close_button.png" id="close_button" class="float_right" alt="Bouton de fermeture" height="30" width="30" title="Accueil" >
 <h2>Connexion</h2>
 <h3>Adresse e-mail</h3>
 <input class="green_input" type="email" name="adresse_mail">
@@ -58,35 +58,63 @@
 
 <div id="inscription_section">
 
-<p>Veuillez renseignez les champs ci-dessous</p>
+<h1>Création de compte</h1>
+
 
 <form method="post" action="#">
+
+<div class="box">
+<h2>Vos Coordonnées</h2>
+<div class="box_ribbon"></div>
+</div>
+
 <ul>
-<li><input type="text" name="prenom" id="prenom" placeholder="Prénom"></li>
-<li><input type="text" name="nom" id="nom" placeholder="Nom"></li>
-<li><select name="pays" id="pays">
+<li><label class="obligatoire" for="civilite">Civilité <span>*</span>:&nbsp;</label>
+<select name="civilite" id="civilite">
+<option value="null">Civilité</option>
+<option value="mr">Mr</option>
+<option value="mme">Mme</option>
+<option value="mlle">Mlle</option></select></li>
+<li><label class="obligatoire" for="prenom">Prénom <span>*</span>:&nbsp;</label><input type="text" name="prenom" id="prenom" placeholder="ex:Hadrien"></li>
+<li><label class="obligatoire" for="nom">Nom <span>*</span>:&nbsp;</label><input type="text" name="nom" id="nom" placeholder="ex:Baflast"></li>
+<li><label class="obligatoire">Pays <span>*</span>:&nbsp;</label><select name="pays" id="pays">
 <option value="null">Pays</option>
 <option value="france">France</option>
 <option value="espagne">Espagne</option>
 <option value="royaume-uni">Royaume-Uni</option>
 </select></li>
-<li><select name="region" id="region" >
+<li><label class="obligatoire" for="region">Région <span>*</span>:&nbsp;</label><select name="region" id="region" >
 <option value="null">Région</option>
 <option value="ile_de_france">Ile-de-France</option>
 <option value="bourgogne">Bourgogne</option>
 </select></li>
-<li><input type="text" name="ville" id="ville" placeholder="Ville"></li>
-<li><input type="email" name="adresse_mail" id="adresse_mail" placeholder="Adresse mail"></li>
-<li><input type="text" name="adresse" id="adresse" placeholder="Adresse"></li>
-<li><input type="tel" name="numero_de_tel" id="numero_de_tel" placeholder="N° de Téléphone"></li>
-<li><textarea name="description_personnelle" id="description_personnelle" placeholder="Description Personelle"></textarea></li>
-<li><input type="password" name="mdp" id="mdp" placeholder="Mot de passe"></li>
-<li><input type="password" name="confirmation_mdp" id="confirmation_mdp" placeholder="Confirmation mot de passe"></li>
+<li><label class="obligatoire" for="adresse">Adresse <span>*</span>:&nbsp;</label><input type="text" name="adresse" id="adresse" placeholder="Adresse"></li>
+<li><label class="obligatoire" for="code_postal">Code Postal <span>*</span>:&nbsp;</label><input type="text" name="code_postal" id="code_postal" placeholder="ex:92130"></li>
+<li><label class="obligatoire" for="ville">Ville <span>*</span>:&nbsp;</label><input type="text" name="ville" id="ville" placeholder="ex:Issy-les-Moulineaux"></li>
+<li><label class="obligatoire" for="numero_de_tel">Telephone <span>*</span>:&nbsp;</label><input type="tel" name="numero_de_tel" id="numero_de_tel" placeholder="ex:066858XXXX"></li>
+<li><label for="birthday">Date de naissance :&nbsp;</label><input type="date" name="birthday" id="birthday"></li>
+<li>(<span>*</span>)Champs obligatoires</li>
+</ul>
 
+<div class="box">
+<h2>Votre Adresse Email</h2>
+<div class="box_ribbon"></div>
+</div>
 
-<input type="checkbox" name="check_condition_g" id="check_condition_g">J'accepte les conditions génarales d'utilisation</li>
+<ul>
+<li><label for="adresse_mail">Email :&nbsp;</label><input type="email" name="adresse_mail" id="adresse_mail" placeholder="ex:hbaflast@isep.fr"></li>
+</ul>
 
-<li><input type="submit" value="Envoyer"></li>
+<div class="box">
+<h2>Votre Mot de Passe</h2>
+<div class="box_ribbon"></div>
+</div>
+
+<ul>
+<li><label  for="mdp">Mot de passe :&nbsp;</label><input type="password" name="mdp" id="mdp"></li>
+<li><label  for="confirmation_mdp">Confirmez le mot de passe :&nbsp;</label><input type="password" name="confirmation_mdp" id="confirmation_mdp"></li>
+<li><label>&nbsp;</label><input type="checkbox" name="check_condition_g" id="check_condition_g">J'accepte les conditions générales d'utilisation</li>
+<li><label>&nbsp;</label><input type="submit" value="Valider"></li>
 </ul>
 
 </form>
