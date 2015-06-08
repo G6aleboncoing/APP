@@ -37,7 +37,15 @@ else
 
 $(document).ready(function(){
     $(".li_1").click(function(){    
+
 		$(".li_2").slideToggle("slow");
+
+    });
+});
+
+$(document).ready(function(){
+    $(".li_2").click(function(){    
+		$(".li_3").slideToggle("slow");
 
     });
 });

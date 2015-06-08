@@ -1,36 +1,82 @@
-<?php 
-(include"configuration.php"); ?>
+<?php (include"configuration.php"); ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" media="screen" type="text/css" href="../CSS/main.css" />
 <link rel="icon" type="image/png" href="images/coing.png" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
+<script src="../JavaScript/jquery.js"></script>
+
 <title>LeBonCoing</title>
+
 </head>
 
 <body>
 
- <?php include("header.php"); ?>
+<?php include("header.php"); ?> 
 
 <div id="body_main">
- 
-	<div id="slideshow">
-		<ul>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-		</ul>
-	</div>
-
-	<div id="categories_section" class="white_background">
+<?php
+	if(isset($_POST['typ'])!=''&&
+	isset($_POST['genre'])!=''&&
+	isset($_POST['variete'])!='')
+		{
+			if(!empty($_POST['typ'])&&
+			!empty($_POST['genre']))
+			{
+				if(!empty($_POST['variete'])) 
+				{
+					
+					$typ= $_POST['typ'];
+					$genre= $_POST['genre'];
+					$variete= $_POST['variete'];
+					$Description= $_POST['Description'];
+					$Origine= $_POST['Origine'];
+				
+				
+					//préparer connexion bdd
+					if($i = $bdd->prepare("
+					INSERT INTO Listes (typ,genre,variete,Description,Origine)
+					VALUES (:typ,:genre,:variete,:Description,:Origine)")
+					) 
+					{	
+						//envoi base de données
+						$i->bindParam(':typ', $typ);
+						$i->bindParam(':genre', $genre);
+						$i->bindParam(':variete', $variete);
+						$i->bindParam(':Description', $Description);
+						$i->bindParam(':Origine', $Origine);
+						$i->execute();
+					}
+				} else
+				{
+					$typ= $_POST['typ'];
+					$genre= $_POST['genre'];
+					$variete='';
+					$Description=$_POST['Description'];
+										
+					//préparer connexion bdd
+					if($i = $bdd->prepare("
+					INSERT INTO Listes (typ,genre,variete,Description)
+					VALUES (:typ,:genre,:variete,:Description)")
+					) 
+					{	
+						//envoi base de données
+						$i->bindParam(':typ', $typ);
+						$i->bindParam(':genre', $genre);
+						$i->bindParam(':variete', $variete);
+						$i->bindParam(':Description', $Description);
+						$i->execute();
+					}
+				}
+			}
+		}
 	
-	
-<h4>Info Catégories</h4>
-		<hr>
+?>
+<div id="menu">
+<ul>
 	<?php
 	$listetyp = $bdd->query("SELECT DISTINCT typ FROM `listes` ORDER BY typ ASC ");
 	while ($donnees = $listetyp->fetch())
@@ -85,45 +131,12 @@
 		<?php
 	}
 	?>
-	</div>
-
-	<div class="annonce_section" id="annonce_section" >
-
-	<table id="table_annonce">
-	<tr>
-		<td>Date</td>
-		<td rowspan="4"><a href="#"> <img src="#" alt="annonce" height="100" width="300" ></a></td>
-		<td>Nom de l'annonce</td>
-	</tr>
-	
-	<tr>
-		<td rowspan="3"></td>
-		<td>Catégories</td>
-	</tr>
-
-	<tr>
-		<td>Localisation</td>
-	</tr>
-
-	<tr>
-		<td>Prix</td>
-	</tr>
-	</table>
-
-	</div>
-
-	<hr>
+		</ul>
 </div>
-</br>
-</br></br></br></Br></br></br></br></br></br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+</div>
 
-<?php include("footer.php"); ?>
+
+<?php include("footer.php"); ?> 
 
 </body>
 </html>

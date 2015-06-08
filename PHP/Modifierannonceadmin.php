@@ -80,7 +80,7 @@ if(	true )
 		}
 	} 
 
-if(	$_SESSION['admin']=='1' ) 
+if($_SESSION['admin']=='1' ) 
 	{ 
 	
 		$idannonce=$_GET['idannonce'];

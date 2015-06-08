@@ -98,8 +98,8 @@ if(	isset($_SESSION['email'])!='' )
 				<p>	<label for="Typ">Type</label>
 				<select name="typ[]" >
 				<option value="Null">Type</option>
-				<option value="Legume" <?php if("Legume"==$donnees['typ']) { echo'" selected="selected"';}?>>Legume</option>
-				<option value="Fruit"<?php if("Fruit"==$donnees['typ']) { echo'" selected="selected"';}?>>Fruit</option>
+				<option value="Legume" <?php if("Legume"==$donnees['typ']) { echo' selected="selected"';}?>>Legume</option>
+				<option value="Fruit"<?php if("Fruit"==$donnees['typ']) { echo' selected="selected"';}?>>Fruit</option>
 				</select>
 				</p>
 

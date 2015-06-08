@@ -1,3 +1,5 @@
+<?php 
+(include"configuration.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +11,6 @@
 <title>LeBonCoing</title>
 </head>
     <body>
-	
 	
 	<?php include("header.php"); ?>
 	

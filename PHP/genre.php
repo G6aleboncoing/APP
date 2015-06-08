@@ -16,84 +16,86 @@
 
 	<?php include("header.php"); ?>
 <div id="body_main">
-
 <?php
 if(isset($_GET['typ'])!=''&&
-isset($_GET['genre'])!=''&&
-isset($_GET['variete'])!='') 
+isset($_GET['genre'])!='') 
 	{
 		$typ=$_GET['typ'];
-		$genre=stripslashes(trim($_GET['genre']));
-		$variete=stripslashes(trim($_GET['variete']));
-		$reponse = $bdd->query("SELECT * FROM listes WHERE (typ='$typ') && (genre='$genre') &&(variete='$variete')");
-
+		$genre=$_GET['genre'];
+		$reponse = $bdd->query("SELECT * FROM listes WHERE (typ='$typ') && (genre='$genre')&& (variete='')");
+		$i=0;
 		// On affiche chaque entrée une à une
-		while ($donnees = $reponse->fetch())
-		{
-?>
-				<a href="Liste.php">Retourner voir la liste</a>
+		while ($donnees = $reponse->fetch()&& $i<1)
+		{$i++;
+			?>
 			</br><!--type, genre, variete, photo, description, origine, cuisine--><!--afficher des annonces liées ? -->
 			<div class="left_section" id="produit-section">
+				<a href="Liste.php">Retourner voir la liste</a>
 				<table border = «2px»>
 					<tr>
 						<th>
 							<ul>
 								type : <?php echo $donnees['typ']; ?></br>
-								genre : <?php echo $donnees['genre']; ?></br>
-								Variété : <?php echo $donnees['variete']; ?>
+								genre : <?php echo $donnees['genre']; ?>
 							</ul>
 						</th>
 						<td>
 							<?php echo '<img src="../Images/',$donnees['Illustration'],'" class="imageGauche" alt="" />'; ?>
 						</td>
 					</tr>
-					<?php if ($donnees['description']=='')
-					{ echo"<tr> <th> à remplir </th> </tr>";
+					<?php if ($donnees['description']!='')
+					{ 
 						?>
-
-<?php
-					}else 
-					{ ?>
-				<tr>
+						<tr>
 							<th >
 								<?php echo $donnees['description']; ?>
 							</th>
 						</tr>
-						<?php
-					}
-?>
-					<?php if ($donnees['Origine']!='') 
-					{
-						?>
 						<tr>
-							<th>
-								Origine : <?php echo $donnees['Origine']; ?>
-							</th>
-						</tr>
-<?php
+						<?php
 					}else 
-					{ echo"<tr> <th> Origine : à remplir </th> </tr>";
+					{ 
 					}
+					?>
+					<th>
+						Variété(s) qui existe(s) :
+						<ul>
+							<li>
+								<?php
+								$listevariete = $bdd->query("SELECT DISTINCT variete FROM `listes` where genre='$genre' ORDER BY variete ASC ");
+								while ($donnees = $listevariete->fetch() )
+								{
+									if ($donnees['variete']!='')
+									{ 
+										?>  <?php echo $donnees['variete'];?><?php
+									}
+								}
+								
+							$listevariete->closeCursor(); 
+								?>
+							</li>
+						</ul>
+					</th>
+				</tr>
+			</table>
+			<!--lien pour les administrateurs afin de supprimer -->
+			<?php
+			if(isset($_SESSION['admin']) && $_SESSION['admin']=='1' ) 
+			{ 
 				?>
-				</table>
+				<a href="supprimergenre.php?genre=<?php echo $genre;?>">supprimer ce genre</a>
+			<?php
+			}
+			?>
 			</div>
 			<?php
-		} ?>
-					<!--lien pour les administrateurs afin de supprimer -->
-				<?php
-				if(isset($_SESSION['admin']) && $_SESSION['admin']=='1' ) 
-				{ 
-					?>
-					<a href="supprimervariete.php?genre=<?php echo $genre;?>&&variete=<?php echo $variete;?>">supprimer cette variete</a>
-					<?php
-				}
+		} 
+			$reponse->closeCursor(); 
 	}else 
 	{
 	header ('Location: Accueil.php');
 	}
-?>
-
-
+	?>
 </div>
 
  <?php include("footer.php"); ?>

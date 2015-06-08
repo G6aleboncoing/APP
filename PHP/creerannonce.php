@@ -162,9 +162,6 @@ if (isset($_SESSION['email'])!='')
 
 </br>
 
-
-
-		
 <div id="formulaire_annonce">
 
 		<form method="post" action="creerannonce.php">

@@ -26,7 +26,9 @@ margin:0;
 width:70%;
 margin :auto;
 padding : 1%;
-margin-top :12%;
+margin-top :15%;
+
+margin-bottom :5%;
 
 
 
@@ -49,9 +51,6 @@ box-shadow: 0px 0px 5px 4px rgba(176,176,176,1);
 
 color : black;
 padding:1%;
-
-
-
 
 }
 
@@ -424,14 +423,13 @@ margin-left:5%;
 
 footer{
 
-position:absolute;
-bottom:0;
+position: relative;
+clear:both;
+margin-top: 000px;
+height: 150px;
+
 background:#222222;
 color:white;
-padding-top:1%;
-padding-bottom:1%;
-width:100%;
-
 }
 
 footer ul{
@@ -593,4 +591,25 @@ margin:0;
 content:"\25B6";
 color:white;
 
+}
+
+}
+#categories_section li
+{
+	
+	display:none;
+}
+#categories_section li:hover > ul > li /* Tu sélectionnes les li de 2eme niveau */
+{
+	display:block;
+}
+ 
+#categories_section li > ul > li:hover > ul > li /* Tu sélectionnes les li de 3eme niveau */
+{
+	display:block;
+}
+
+.imageGauche {
+	width: 70px;
+	height: 70px;
 }
