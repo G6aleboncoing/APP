@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" media="screen" type="text/css" href="../CSS/main.css" />
 <link href='http://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
-<link rel="icon" type="image/png" href="images/coing.png" />
+<link rel="icon" type="image/png" href="images/lbc_logo.png" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
 <title>LeBonCoing</title>
@@ -29,11 +29,12 @@
 
 <div id="header_2">
 <ul>
-<li><a href="#"><p id="logo">Leboncoing.com</p></a></li>
-<li class="maj"><a href="#">Déposer une annonce</a></li>
-<li class="maj"><a href="#">Mes Alertes</a></li>
-<li class="maj"><a href="#">Mon Compte</a></li>
-<li class="maj"><a href="#">Forum</a></li>
+<li><a href="#"><img src="images/lbc_logo.png" width="100" height="100"></a></li>
+<li><a href="#"><p id="logo">Leboncoing<span>.com</span></p></a></li>
+<li class="maj_hover"><a href="#">Déposer une annonce</a></li>
+<li class="maj_hover"><a href="#">Mes Alertes</a></li>
+<li class="maj_hover"><a href="#">Mon Compte</a></li>
+<li class="maj_hover"><a href="#">Forum</a></li>
 </ul>
 </div>
 
@@ -54,34 +55,64 @@
 </header>
 
 
-<div class="left_section" id="compte_section">
+<div id="body_main">
+
+<div id="compte_section">
+
+<h1>Mes données personnelles</h1>
 
 
-<input type="text" name="prenom" id="prenom" placeholder="Prénom"><br>
-<input type="text" name="nom" id="nom" placeholder="Nom"><br>
-<select name="pays" id="pays" >
-<option value="null">Pays</option>
-<option value="france">France</option>
-<option value="espagne">Espagne</option>
-<option value="royaume-uni">Royaume-Uni</option>
-</select><br>
-<select name="region" id="region" >
-<option value="null">Région</option>
-<option value="ile_de_france">Ile-de-France</option>
-<option value="bourgogne">Bourgogne</option>
-</select><br>
-<input type="text" name="ville" id="ville" placeholder="Ville"><br>
-<input type="email" name="adresse_mail" id="adresse_mail" placeholder="Adresse mail"><br>
-<input type="text" name="adresse" id="adresse" placeholder="Adresse"><br>
-<input type="tel" name="numero_de_tel" id="numero_de_tel" placeholder="N° de Téléphone"><br>
-<textarea name="description_personnelle" id="description_personnelle" placeholder="Description Personelle"></textarea><br>
-<input type="password" name="mdp" id="mdp" placeholder="Mot de passe"><br>
-<input type="password" name="confirmation_mdp" id="confirmation_mdp" placeholder="Confirmation mot de passe"><br>
-<input type="file" name="img_profil" id="img_profil"><br>
+<form method="post" action="#">
 
-<input type="submit" value="Envoyer">
+<div class="box">
+<h2>Mes Coordonnées</h2>
+<div class="box_ribbon"></div>
+</div>
+
+<ul>
+<li><label>Civilité:&nbsp;</label><p id="civilite">Mr</p></li>
+<li><label>Prénom:&nbsp;</label><p id="prenom">Hadrien</li>
+<li><label>Nom:&nbsp;</label><p id="nom">Baflast</li>
+<li><label>Pays:&nbsp;</label><p id="pays">France</p></li>
+<li><label>Région:&nbsp;</label><p id="region">Ile-de-France</p></li>
+<li><label>Adresse:&nbsp;</label><p id="adresse">29-31 Avenue Victor Hugo</p></li>
+<li><label>Code Postal:&nbsp;</label><p id="code_postal">92130</p></li>
+<li><label>Ville:&nbsp;</label><p id="ville">Issy-les-Moulineaux</p></li>
+<li><label>Telephone:&nbsp;</label><p id="numero_de_tel">066858XXXX</p></li>
+<li><label for="birthday">Date de naissance:&nbsp;</label><p id="birthday">22/05/1993</p></li>
+<li><label>&nbsp;</label><a href="#">>> Modifier</a></li>
+<li><hr></li>
+<li><hr></li>
+</ul>
+
+<div class="box">
+<h2>Mon Adresse Email</h2>
+<div class="box_ribbon"></div>
+</div>
+
+<ul>
+<li><label>Email:&nbsp;</label><p id="adresse_mail">hbaflast@isep.fr</p></li>
+<li><label>&nbsp;</label><a href="#">>> Modifier</a></li>
+<li><hr></li>
+<li><hr></li>
+</ul>
+
+<div class="box">
+<h2>Mon Mot de Passe</h2>
+<div class="box_ribbon"></div>
+</div>
+
+<ul>
+<li><label>Mot de passe:&nbsp;</label><p id="mdp">********</p></li>
+<li><label>&nbsp;</label><a href="#">>> Modifier</a></li>
+<li><hr></li>
+<li><hr></li>
+<li><a href="#" id="suppression_link">>> Supprimer mon compte</a></li>
+</ul>
 
 </form>
+
+</div>
 
 </div>
 
