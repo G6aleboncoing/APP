@@ -1,16 +1,36 @@
-CREATE TABLE `membres` (
-	`id_membre` int(11) unsigned NOT NULL AUTO_INCREMENT,
-	`nom` varchar(45) NOT NULL,
-	`prenom` varchar(45) NOT NULL,
-	`email` varchar(75) NOT NULL,
-	`mot_passe` varchar(45) NOT NULL,
-	`pays` varchar(45) NOT NULL,
-	`ville` varchar(45) NOT NULL,	
-	`detail` varchar(250) NOT NULL,
-	`description` int(10) NOT NULL,
+CREATE TABLE `membres2` (
 	
-	PRIMARY KEY (`id_membre`)
+	`id_membre` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	
+	`civilite` varchar(45) NULL,
+	
+	`prenom` varchar(45) NOT NULL,
+
+	`nom` varchar(45) NOT NULL,
+
+	`pays` varchar(45) NOT NULL,
+
+	`region` varchar(45) NOT NULL,
+
+	`adresse` varchar(100) NULL,
+
+	`code_postal` varchar(45) NULL,
+
+	`ville` varchar(45) NOT NULL,
+
+	`email` varchar(75) NOT NULL,
+
+	`mdp` varchar(45) NOT NULL,
+
+	`detail` varchar(250) NOT NULL,
+
+	`admin` int(10) NOT NULL,
+	
+	
+PRIMARY KEY (`id_membre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
 
 CREATE TABLE ‘region’ (
 		`id_region` int(11) NOT NULL AUTO_INCREMENT,
