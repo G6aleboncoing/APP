@@ -4,8 +4,6 @@
 html{
 
 background: #e5e5e5;
-height:100%;
-width:100%;
 padding:0;
 margin:0;
 
@@ -412,13 +410,22 @@ padding:0;
 
 }
 
-#categories_section h4 {
+#categories_section h3 {
 
 border-bottom:1px solid black;
 margin:0;
 padding-left:2%;
 background:#B8B0A4;
 color:#83DEB5;
+
+}
+
+#categories_section h4 {
+
+margin:0;
+padding-left:4%;
+color:#B8B0A4;
+
 
 }
 
@@ -431,7 +438,7 @@ padding:0;
 } 
 
 
-#categories_section li:before{
+#categories_section li h4:before{
 
 content:"\229E"
 
@@ -693,7 +700,34 @@ color:#CC1717;
 
 }
 
+.alert{
 
+font-weight:bold;
+font-size:105%;
+
+}
+
+.alert-error{
+
+color: #b94a48;
+background-color: #f2dede;
+
+}
+
+.alert-info {
+
+color: #3a87ad;
+background-color: #d9edf7;
+
+}
+
+.alert-success {
+
+color: #468847;
+background-color: #dff0d8;
+  
+ }
+ 
 /*Page Aide */
 
 
@@ -707,13 +741,19 @@ padding:0;
 
 #help_section li{
 
-padding-top:2%;
-padding-bottom:2%;
 cursor:pointer;
 
 }
 
-.li_first{
+
+#help_section ul ul{
+
+display:none;
+
+
+}
+
+.li_1{
 
 background:#B8B0A4;
 width:100%;
@@ -722,48 +762,66 @@ border-bottom:2px solid #e5e5e5;
 
 }
 
-.li_second{
+.li_2{
 
 background:#EEEEEE;
 max-width:100%;
-display:none;
 padding-left:4%;
-
+padding:1%;
 
 
 }
 
-#help_section ul p{
+.li_1  h3{
+
+max-width:100%;
+cursor:pointer;
+padding-top:3%;
+padding-bottom:3%;
+margin:0;
+color:white;
+font-size:95%;
+padding-left:1%;
+
+}
+
+.li_2  h4{
+
+max-width:100%;
+cursor:pointer;
+padding-top:1%;
+padding-bottom:1%;
+margin:0;
+font-size:95%;
+color:black;
+
+}
+
+
+#help_section ul ul p{
 
 background:#EEEEEE;
 max-width:100%;
 display:none;
 cursor:default;
 margin:0;
-padding-left:4%;
+
 
 }
 
-.li_first:before{
+.li_1 h3:before{
 
 content:"\25B6\a0";
 color:white;
 
 }
 
-.li_second:before{
+.li_2 h4:before{
 
 content:"\25B6\a0";
-color:white;
 
 }
 
-.down:before{
-
-content:"\25BC\a0";
-color:white;
-
-}
 
 /*Page Produit*/
 

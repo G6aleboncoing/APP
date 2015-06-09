@@ -8,6 +8,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
 <title>LeBonCoing</title>
+
 </head>
 
 <body>
@@ -62,7 +63,7 @@
 <h1>Création de compte</h1>
 
 
-<form method="post" action="#">
+<form method="post" action="#" onSubmit="return verify(this.mdp, this.confirmation_mdp)">
 
 <div class="box">
 <h2>Vos Coordonnées</h2>
@@ -70,31 +71,29 @@
 </div>
 
 <ul>
-<li><label class="obligatoire" for="civilite">Civilité <span>*</span>:&nbsp;</label>
+<li><label for="civilite">Civilité :&nbsp;</label>
 <select name="civilite" id="civilite">
 <option value="null">Civilité</option>
 <option value="mr">Mr</option>
 <option value="mme">Mme</option>
 <option value="mlle">Mlle</option></select></li>
-<li><label class="obligatoire" for="prenom">Prénom <span>*</span>:&nbsp;</label><input type="text" name="prenom" id="prenom" placeholder="ex:Hadrien"></li>
-<li><label class="obligatoire" for="nom">Nom <span>*</span>:&nbsp;</label><input type="text" name="nom" id="nom" placeholder="ex:Baflast"></li>
-<li><label class="obligatoire">Pays <span>*</span>:&nbsp;</label><select name="pays" id="pays">
+<li><label for="prenom">Prénom :&nbsp;</label><input type="text" name="prenom" id="prenom" placeholder="ex:Hadrien"></li>
+<li><label for="nom">Nom :&nbsp;</label><input type="text" name="nom" id="nom" placeholder="ex:Baflast"></li>
+<li><label for="pays">Pays :&nbsp;</label><select name="pays" id="pays">
 <option value="null">Pays</option>
 <option value="france">France</option>
 <option value="espagne">Espagne</option>
 <option value="royaume-uni">Royaume-Uni</option>
 </select></li>
-<li><label class="obligatoire" for="region">Région <span>*</span>:&nbsp;</label><select name="region" id="region" >
+<li><label for="region">Région :&nbsp;</label><select name="region" id="region" >
 <option value="null">Région</option>
 <option value="ile_de_france">Ile-de-France</option>
 <option value="bourgogne">Bourgogne</option>
 </select></li>
-<li><label class="obligatoire" for="adresse">Adresse <span>*</span>:&nbsp;</label><input type="text" name="adresse" id="adresse" placeholder="Adresse"></li>
-<li><label class="obligatoire" for="code_postal">Code Postal <span>*</span>:&nbsp;</label><input type="text" name="code_postal" id="code_postal" placeholder="ex:92130"></li>
-<li><label class="obligatoire" for="ville">Ville <span>*</span>:&nbsp;</label><input type="text" name="ville" id="ville" placeholder="ex:Issy-les-Moulineaux"></li>
-<li><label class="obligatoire" for="numero_de_tel">Telephone <span>*</span>:&nbsp;</label><input type="tel" name="numero_de_tel" id="numero_de_tel" placeholder="ex:066858XXXX"></li>
-<li><label for="birthday">Date de naissance :&nbsp;</label><input type="date" name="birthday" id="birthday"></li>
-<li>(<span>*</span>)Champs obligatoires</li>
+<li><label for="adresse">Adresse :&nbsp;</label><input type="text" name="adresse" id="adresse" placeholder="Adresse"></li>
+<li><label for="code_postal">Code Postal :&nbsp;</label><input type="text" name="code_postal" id="code_postal" placeholder="ex:92130"></li>
+<li><label for="ville">Ville :&nbsp;</label><input type="text" name="ville" id="ville" placeholder="ex:Issy-les-Moulineaux"></li>
+<li><label for="numero_de_tel">Telephone :&nbsp;</label><input type="tel" name="numero_de_tel" id="numero_de_tel" placeholder="ex:066858XXXX"></li>
 <li><hr></li>
 <li><hr></li>
 </ul>
@@ -118,11 +117,13 @@
 <ul>
 <li><label  for="mdp">Mot de passe :&nbsp;</label><input type="password" name="mdp" id="mdp"></li>
 <li><label  for="confirmation_mdp">Confirmez le mot de passe :&nbsp;</label><input type="password" name="confirmation_mdp" id="confirmation_mdp"></li>
+<li><label>&nbsp;</label><div class="" id="passwordStrength">&nbsp;</div></li>
 <li><hr></li>
 <li><hr></li>
 <li><label>&nbsp;</label><input type="checkbox" name="check_condition_g" id="check_condition_g">J'accepte les conditions générales d'utilisation</li>
 <li><label>&nbsp;</label><input type="submit" value="Valider"></li>
 </ul>
+
 
 </form>
 
