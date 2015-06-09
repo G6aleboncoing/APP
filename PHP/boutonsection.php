@@ -11,28 +11,30 @@
 
 <?php 
 		//Liste des choix pour les non connectés
-	if (isset($_SESSION['email'])=='')		
+	if (isset($_SESSION['adresse_mail'])=='')		
 	{
 		//Liste des choix pour les non connectés
 		echo'<li class="maj"><a href="Inscription.php"> S\'inscrire</a></li>';
 
 	}?>
 </ul>
+<div id="header_3">
 <ul>
 <!--<li class="last"><a href="#">Forum</a></li>-->
-	<?php if (isset($_SESSION['email'])!='')
+	<?php if (isset($_SESSION['adresse_mail'])!='')
 	{
 		//Liste des choix de base lorsqu'on se connecte
 		//Attention pour les mails, c'est encore à faire.
 		//Refaire l'endroit où ça s'affiche ?
 		echo '
 		<li class="maj"><a href="compte.php">Mon compte</a></li>
-		<li><a href="#">mes mails</a></li>
+		<li class="maj"><a href="mail.php">mes mails</a></li>
 		<li class="maj"><a href="Mesannonces.php">Mes annonces</a></li>';
 
 	} 
 		?>
 </ul>
+</div>
 
 </div>
 

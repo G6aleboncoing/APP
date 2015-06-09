@@ -10,75 +10,6 @@
 <script src="../JavaScript/jquery.js"></script>
 <title>LeBonCoing</title>
 			<script type='text/javascript'>
-			var xhr = null; 
- 
-			function getXhr(){
-				if(window.XMLHttpRequest) // Firefox et autres
-				   xhr = new XMLHttpRequest(); 
-				else if(window.ActiveXObject){ // Internet Explorer 
-				   try {
-			                xhr = new ActiveXObject("Msxml2.XMLHTTP");
-			            } catch (e) {
-			                xhr = new ActiveXObject("Microsoft.XMLHTTP");
-			            }
-				}
-				else { // XMLHttpRequest non supporté par le navigateur 
-				   alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest..."); 
-				   xhr = false; 
-				} 
-			}
- 
-			/**
-			* Méthode qui sera appelée sur le click du bouton
-			*/
-			function go(){
-				getXhr();
-				// On défini ce qu'on va faire quand on aura la réponse
-				xhr.onreadystatechange = function(){
-					// On ne fait quelque chose que si on a tout reçu et que le serveur est ok
-					if(xhr.readyState == 4 && xhr.status == 200){
-						leselect = xhr.responseText;
-						// On se sert de innerHTML pour rajouter les options a la liste
-						document.getElementById('genre').innerHTML = leselect;
-					}
-				}
- 
-				// Ici on va voir comment faire du post
-				xhr.open("POST","Ajaxespece.php",true);
-				// ne pas oublier ça pour le post
-				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-				// ne pas oublier de poster les arguments
-				// ici, l'id de l'auteur
-				sel = document.getElementById('type');
-				typ = sel.options[sel.selectedIndex].value;
-				xhr.send("typ="+typ);
-				
-				alert ("coucou");//ici c'est la place choisi
-			}
-			function goesp(){
-				getXhr();
-				
-				alert ("coucou");//ici c'est la place choisi
-				// On défini ce qu'on va faire quand on aura la réponse
-				xhr.onreadystatechange = function(){
-					// On ne fait quelque chose que si on a tout reçu et que le serveur est ok
-					if(xhr.readyState == 4 && xhr.status == 200){
-						leselect = xhr.responseText;
-						// On se sert de innerHTML pour rajouter les options a la liste
-						document.getElementById('variete').innerHTML = leselect;
-					}
-				}
- 
-				// Ici on va voir comment faire du post
-				xhr.open("POST","Ajaxvariete.php",true);
-				// ne pas oublier ça pour le post
-				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-				// ne pas oublier de poster les arguments
-				// ici, l'id de l'auteur
-				sel = document.getElementById('genre2');
-				genr = sel.options[sel.selectedIndex].value;
-				xhr.send("genr="+genr);
-			}
 		</script>
 
 </head>
@@ -118,7 +49,6 @@ if( isset($_SESSION['ID_membre'])!='' )
 				$variete = stripslashes(trim($_POST['variete']));
 				$_POST['description'] = stripslashes(trim($_POST['description']));
 				$_POST['prix'] = stripslashes(trim($_POST['prix']));
-													
 				$id_annonce = '';
 				$titre = $_POST['titre'];
 				$typ=  implode(",", $typ_Array);
@@ -156,7 +86,7 @@ if( isset($_SESSION['ID_membre'])!='' )
 		
 	}
 	
-if (isset($_SESSION['email'])!='')
+if (isset($_SESSION['adresse_mail'])!='')
 	{$test=0;
 ?>
 
@@ -194,7 +124,7 @@ if (isset($_SESSION['email'])!='')
 				<label>genre : </label>
 				<div id="genre">
 				<select name="genre[]" id="genre">
-				<option value="Null" selected="selected">--genre--</option>
+				<option value="Null" selected="selected">Choisir un type</option>
 				<?php
 				//verification blabla
 				$reponse = $bdd->query("SELECT DISTINCT genre FROM `listes` ORDER BY genre ASC ");

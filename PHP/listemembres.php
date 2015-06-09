@@ -14,23 +14,28 @@
  <?php include("header.php"); ?>
 
 <div id="body_main">
+
+			<strong>membre</strong> : <br /> 
  	<?php 
 	// On récupère tout le contenu de la table annonces
 
-	$reponse = $bdd->query('SELECT * FROM membres');
+	$reponse = $bdd->query('SELECT * FROM membres2');
 
 	// On affiche chaque entrée une à une
 	while ($donnees = $reponse->fetch())
 	{
 ?>
 		<p>
-			<strong>membre</strong> : <br /> 
-			nom:<?php echo $donnees['nom']; ?><br />
-			prenom:<?php echo $donnees['prenom']; ?> <br />
-			email: <?php echo $donnees['email']; ?> <br />
-			pays: <?php echo $donnees['pays']; ?> <br />
-			ville: <?php echo $donnees['ville']; ?> <br />
-			detail: <?php echo $donnees['detail']; ?> <br />
+			<?php echo $donnees['civilite'],' '; ?> <?php echo $donnees['nom']; ?><br />
+			email: <?php echo $donnees['adresse_mail']; ?> <br />
+			Pays: <?php echo $donnees['pays']; ?> <br />
+			Région: <?php echo $donnees['region']; ?> <br />
+			
+			<a href="Message.php?forme=envoi&&emaildestinataire= <?php echo $donnees['adresse_mail']; ?>" >Contacter</a
+			//voir profil
+			//ses annonces
+			<hr>
+			<hr>
 		</p>
    
 <?php

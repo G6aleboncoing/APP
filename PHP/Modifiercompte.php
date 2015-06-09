@@ -18,100 +18,122 @@ include('configuration.php');
 <div id="body_main">
  
 <?php
-
-if(	true ) 
-	
-	{
-		//vérifier si les champs sont remplis et si le formulaire a été envoyé
-		if(	isset($_POST['nom'])!='' && 
+$i=0;
+if(	isset($_SESSION['ID_membre'])!='' ) 
+	{//vérifier si les variables sont définis, et remplis 
+		if(	
+		isset($_POST['civilite'])!=''&&
 		isset($_POST['prenom'])!='' && 
-		isset($_POST['email'])!='' && 
-		// isset($_POST['passe'])!='' && 
-		isset($_POST['pays'])!='' &&
-		isset($_POST['ville'])!='' &&
-		isset($_POST['detail'])!=''  )
+		isset($_POST['nom'])!='' && 
+		isset($_POST['pays'])!='' && 
+		isset($_POST['region'])!='' && 
+		isset($_POST['adresse'])!='' && 
+		isset($_POST['code_postal'])!='' && 
+		isset($_POST['ville'])!='' && 
+		isset($_POST['numero_de_tel'])!='' && 
+		isset($_POST['mdp'])!='' && 
+		isset($_POST['detail'])!='')
 		{
 		
-			if(!empty($_POST['nom']) 	
+			if(!empty($_POST['civilite']) 
 			&& !empty($_POST['prenom'])
-			// && !empty($_POST['passe'])
+			&& !empty($_POST['nom']) 
 			&& !empty($_POST['pays'])
+			&& !empty($_POST['region'])
+			&& !empty($_POST['code_postal'])
 			&& !empty($_POST['ville'])
-			&& !empty($_POST['detail']))
+			&& !empty($_POST['mdp']))
+			
 			{
-				//Alors on enleve lechappement 
-
-		
-				$_POST['nom'] = stripslashes(trim($_POST['nom']));
+				//verifier le checkbox
+				
+				
+				
+				$adresse_mail=$_SESSION['adresse_mail'];
+				
 				$_POST['prenom'] = stripslashes(trim($_POST['prenom']));
-				$_POST['email'] = stripslashes(trim($_POST['email']));
-				// $_POST['passe'] = stripslashes(trim($_POST['passe']));
-				$_POST['pays'] = stripslashes(trim($_POST['pays']));
+				$_POST['nom'] = stripslashes(trim($_POST['nom']));
+				$_POST['adresse'] = stripslashes(trim($_POST['adresse']));
+				$_POST['code_postal'] = stripslashes(trim($_POST['code_postal']));
 				$_POST['ville'] = stripslashes(trim($_POST['ville']));
-				$_POST['detail'] = stripslashes(trim($_POST['detail']));
+				$_POST['numero_de_tel'] = stripslashes(trim($_POST['numero_de_tel']));
+				$_POST['mdp'] = stripslashes(trim($_POST['mdp']));
 	
-				//vérifier format l'adresse mail ici
-				if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
-				{
-		
-					
+				
+				
 					//vérifier unicité de l'adresse ici
 					if(true)
 					{
-						// Alors on echappe les variables pour pouvoir les mettre en requete sql
-
-						$nom = $_POST['nom'];
-						$prenom = $_POST['prenom'];
-						$email = $_POST['email'];
-						// $mot_passe = sha1($_POST['passe']);
-						$pays = $_POST['pays'];
-						$ville = $_POST['ville'];
-						$detail = $_POST['detail'];
-			
-						//préparer connexion bdd
 						
-						$update = $bdd->prepare("UPDATE `membres` SET  
-							`nom`=:nom,
+						// Alors on echappe les variables pour pouvoir les mettre en requete sql
+						$id_membre = '';
+						$civilite = $_POST['civilite'];//array
+						$prenom = $_POST['prenom'];
+						$nom = $_POST['nom'];
+						$pays = $_POST['pays'];//array
+						$region = $_POST['region'];//array
+						$adresse = $_POST['adresse'];//array
+						$code_postal = $_POST['code_postal'];//array
+						$ville = $_POST['ville'];
+						$numero_de_tel = $_POST['numero_de_tel'];
+						$mdp= sha1($_POST['mdp']);
+						$detail = $_POST['detail'];
+						$id_membre= $_SESSION['ID_membre'];
+						//préparer connexion bdd
+						$update = $bdd->prepare("UPDATE `membres2` 
+							SET 
+							`civilite`=:civilite, 
 							`prenom`=:prenom,
-							`email`=:email,
+							`nom`=:nom,
 							`pays`=:pays,
+							`region`=:region,
+							`adresse`=:adresse,
+							`code_postal`=:code_postal,
 							`ville`=:ville,
-							`detail`=:detail 
-							WHERE `email`=:email");
+							`numero_de_tel`=:numero_de_tel,
+							`mdp`=:mdp,
+							`detail`=:detail
+							WHERE `id_membre`=:id_membre");
+ 						
  						
 								$update->execute(array(
-									':nom' => $_POST['nom'],
-                                    ':prenom' => $_POST['prenom'],
-                                    ':email' => $_POST['email'],
-									':pays' => $_POST['pays'],
-									':ville' => $_POST['ville'],
-									':detail' => $_POST['detail'],
-									':email' => $_SESSION['email']
+									':civilite'=> $_POST['civilite'],
+									':prenom'=> $_POST['prenom'],
+									':nom'=> $_POST['nom'],
+									':pays'=> $_POST['pays'],
+									':region'=> $_POST['region'],
+									':adresse'=> $_POST['adresse'],
+									':code_postal'=> $_POST['code_postal'],
+									':ville'=> $_POST['ville'],
+									':numero_de_tel'=> $_POST['numero_de_tel'],
+									':mdp'=> $mdp,
+									':detail'=> $_POST['detail'],
+									':id_membre'=> $id_membre
 									));
-						
-								$req1=$bdd->query("SELECT * FROM membres where email = '$email'"); 
-								$data1=$req1->fetch();
-								$_SESSION['email']= $data1['email'];
-								$_SESSION['passe']= $data1['mot_passe'];
-								$_SESSION['ID_membre']= $data1['id_membre'];
-								$_SESSION['nom']= $data1['nom'];
-								$_SESSION['prenom']= $data1['prenom'];
-								$_SESSION['Pays']= $data1['pays'];
-								$_SESSION['ville']= $data1['ville'];
-								$_SESSION['detail']= $data1['detail'];
-								
-								
-								$req1->closeCursor(); 
-						
-							
-						
-						
-					}else
-					{	
-						//si adresse déjà utilisé
-						echo'Cette adresse est déjà utillisé';
-					}
-	
+
+									
+									unset($_SESSION['civilite']);
+									unset($_SESSION['adresse_mail']);
+									unset($_SESSION['mdp']);
+									unset($_SESSION['ID_membre']);
+									unset($_SESSION['nom']);
+									unset($_SESSION['prenom']);
+									unset($_SESSION['pays']);
+									unset($_SESSION['region']);
+									unset($_SESSION['admin']);
+									unset($_SESSION['adresse']);
+									unset($_SESSION['code_postal']);
+									unset($_SESSION['numero_de_tel']);
+									unset($_SESSION['ville']);
+									unset($_SESSION['detail']);
+									session_unset();
+									
+									session_destroy();
+
+									echo"</br> reconnectez vous pour actualisez vos donnees";
+									$i++;
+									
+				
 				}else
 				{
 					//si adresse pas bonne
@@ -128,42 +150,135 @@ if(	true )
 		}
 	}
 	
-if(	isset($_SESSION['email'])!='' ) 
+if(	isset($_SESSION['adresse_mail'])!='' ) 
 	{ 
 ?>		
 		</br>
+		
 		<div class="content">
+
 		<form method="post" action="Modifiercompte.php">
-		
-		<label for="nom">Nom</label>
-		<input type="text" name="nom" id="nom" value='<?php echo $_SESSION['nom'] ?>'/><br/>
-		
-		<label for="prenom">Prenom</label>
-		<input type="text" name="prenom" id="prenom" value='<?php echo $_SESSION['prenom'] ?>'/><br />
 
-		<label for="email">Adresse email</label>
-		<input type="text" name="email" id="email" value='<?php echo $_SESSION['email'] ?>'/><br />
+			<div class="box">
+				<h2>Vos Coordonnées</h2>
+				<div class="box_ribbon">
+				</div>
+			</div>
 
-		<label for="pays">Pays</label>
-		<input type="text" name="pays" id="pays" value='<?php echo $_SESSION['Pays'] ?>'/><br />
-	
-		<label for="ville">Ville</label>
-		<input type="text" name="ville" id="ville" value='<?php echo $_SESSION['ville'] ?>'/><br />
+			<ul>
+				<li><label class="obligatoire" for="civilite">Civilité <span>*</span>:&nbsp;</label>
+					<select name="civilite" id="civilite">
+						<option value="">Civilité</option>
+						<option value="Monsieur"<?php if("Monsieur"==$_SESSION['civilite']){echo'" selected="selected"';} ?>>M</option>
+						<option value="Madame"<?php if("Madame"==$_SESSION['civilite']){echo '" selected="selected"';} ?>>Mme</option>
+						<option value="Mademoiselle"<?php if("Mademoiselle"==$_SESSION['civilite']){echo'" selected="selected"';} ?>>Mlle</option>
+					</select>
+				</li>
 
-		<label for="detail">Informations personnelles</label>
-		<input type="text" name="detail" id="detail" value='<?php echo $_SESSION['detail'] ?>'/><br />
-	
-		<input type="hidden" name="validate" id="validate" value="ok"/>
+				<li><label class="obligatoire" for="prenom">Prénom <span>*</span>:&nbsp;</label>
+					<input type="text" name="prenom" id="prenom" value="<?php echo $_SESSION['prenom']; ?> ">
+				</li>
+				
+				<li><label class="obligatoire" for="nom">Nom <span>*</span>:&nbsp;</label>
+					<input type="text" name="nom" id="nom" value="<?php echo $_SESSION['nom']; ?> ">
+				</li>
+				
+				<li><label class="obligatoire">Pays <span>*</span>:&nbsp;</label>
+				<select name="pays" id="pays">
+					<option value="">Pays</option>
+					<option value="France" <?php if("France"==$_SESSION['pays']){echo'" selected="selected"';} ?>>France</option>
+					<option value="Espagne"<?php if("Espagne"==$_SESSION['pays']){echo'" selected="selected"';} ?>>Espagne</option>
+					<option value="Royaume-Unis"<?php if("Royaume-Unis"==$_SESSION['pays']){echo'" selected="selected"';} ?>>Royaume-Uni</option>
+				</select>
+				</li>
+			
+				<li><label class="obligatoire" for="region">Région <span>*</span>:&nbsp;</label>
+				<select name="region" id="region" >
+					<option value="">Région</option>
+					<?php 
+					$reponse = $bdd->query("SELECT DISTINCT nom_region FROM `region` ORDER BY id_region ASC ");
+					while ($donnees = $reponse->fetch())
+					{ 
+						?>
+						<option value="<?php echo $donnees['nom_region'];?><?php if($donnees['nom_region']==$_SESSION['region']){echo'" selected="selected"';} ?>"> <?php echo $donnees['nom_region'];?></option>	
+						<?php
+					}
+					?>
+				</select>
+				</li>
+				
+				<li><label class="obligatoire" for="adresse">Adresse <span> </span>:&nbsp;</label>
+					<input type="text" name="adresse" id="adresse" value="<?php echo $_SESSION['adresse']; ?> ">
+				</li>
+				
+				<li><label class="obligatoire" for="code_postal">Code Postal <span>*</span>:&nbsp;</label>
+					<input type="int" name="code_postal" id="code_postal" value="<?php echo $_SESSION['code_postal']; ?> ">
+				</li>
+				
+				<li><label class="obligatoire" for="ville">Ville <span>*</span>:&nbsp;</label>
+					<input type="text" name="ville" id="ville" value="<?php echo $_SESSION['ville']; ?> ">
+				</li>
+				
+				<li><label class="obligatoire" for="numero_de_tel">Telephone <span> </span>:&nbsp;</label>
+					<input type="tel" name="numero_de_tel" id="numero_de_tel" value="<?php echo $_SESSION['numero_de_tel']; ?> ">
+				</li>
 
-		<input type="submit" name="envoi" value="Envoyer"/>
+				<li><label class="obligatoire" for="detail">Detail <span> </span>:&nbsp;</label>
+					<input type="text" name="detail" id="detail" value="<?php echo $_SESSION['detail']; ?> ">
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+			</ul>
 
+			<div class="box">
+				<h2> Mot de passe </h2>
+				<div class="box_ribbon">
+				</div>
+			</div>
+
+			<ul>
+				<li><label  for="mdp">Confirmation Mot de passe :&nbsp;<span>*</span></label>
+					<input type="password" name="mdp" id="mdp">
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+				
+				<li><label>&nbsp;</label>
+					<input type="checkbox" name="check_condition_g" id="check_condition_g">J'accepte les conditions générales d'utilisation
+				</li>
+				
+				
+				
+				<li>
+					(<span>*</span>)Champs obligatoires
+				</li>
+				
+				
+				<li><label>&nbsp;</label>
+					<input type="submit" value="Valider">
+				</li>
+			</ul>
 		</form>
+
 	
 		</div>
+		
 <?php
 	} else
 	{
-		echo'vous êtes déjà inscrit(e)';
+		if ($i=='0')echo'vous devez être inscrit(e)';
 	}
 ?>
 </div>
