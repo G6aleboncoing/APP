@@ -58,36 +58,36 @@
 
 <div id="slideshow">
 <ul>
-<li><a href="PageAccueil.html"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-<li><a href="PageAccueil.html"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-<li><a href="PageAccueil.html"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-<li><a href="PageAccueil.html"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+<li><a href="PageAccueil.html"> <img src="images/banniere_1.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+<li><a href="PageAccueil.html"> <img src="images/banniere_2.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+<li><a href="PageAccueil.html"> <img src="images/banniere_3.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+<li><a href="PageAccueil.html"> <img src="images/banniere_1.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
 </ul>
 </div>
 
 
 
-<div name="bouton_section" id="bouton_section">
+<div id="recherche_section">
 
+<ul>
+<li><input class="recherche_li" type="search" id="rechercher"></li>
 
-
-<nav id="recherche_menu">
-
-<input type="search" id="rechercher">
-
-<select name="categories" id="categories" >
+<li><select class="recherche_li" name="categories" id="categories" >
 <option value="null">Catégories</option>
 <option value="fruits">Fruits</option>
 <option value="légumes">Légumes</option>
-</select>
+</select></li>
 
-<select name="region" id="recherche_region" >
+<li><select class="recherche_li" name="region" id="recherche_region" >
 <option value="null">Région</option>
 <option value="ile_de_france">Ile-de-France</option>
 <option value="bourgogne">Bourgogne</option>
-</select>
+</select></li>
 
-<input type="search" id="recherche_ville" placeholder="Villes ou codes postaux"><br>
+<li><input type="search" class="recherche_li" id="recherche_ville" placeholder="Villes ou codes postaux"></li>
+
+</ul>
+
 
 <select name="nbAnnoncePage" id="nbAnnoncePage" >
 <option value="10">10</option>
@@ -95,9 +95,9 @@
 <option value="30">30</option>
 </select>
 
-</nav>
-
 </div>
+
+<div id="center_section">
 
 <div id="categories_section" class="white_background">
 <h4>Info Catégories</h4>
@@ -115,67 +115,49 @@
 </ul>
 </li>
 
-
 </div>
 
-<div id="annonce_section" class="white_background" >
+<div id="annonce_section">
 
-<table id="table_annonce">
-<tr>
-<td>Date</td>
-<td rowspan="4"><a href="#"> <img src="#" alt="photo de l'annonce" height="100" width="300" ></a></td>
-<td>Nom de l'annonce</td>
-</tr>
-<tr>
-<td rowspan="3"></td>
-<td>Catégories</td>
-</tr>
-<tr>
-<td>Localisation</td>
-</tr>
-<tr>
-<td>Prix</td>
-</tr>
-</table>
-<hr>
+<ul class="white_background">
+	<li><p>9 juin</p>
+	<p>5:44</p></li>
+	<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
+	<li><p class="title">Titre de l'annonce: <span>Kiwiiiiiii c'est la vie</span></p>
+	<p>Variété: <span>Kiwi</span></p>
+	<p>Localisation: <span>Paris</span></p>
+	<p>Type: <span>Vente</span></p>
+	<p class="price">Prix: <span>5</span> €/kg</p>
+	</li>
+</ul>
 
-<table id="table_annonce">
-<tr>
-<td>Date</td>
-<td rowspan="4"><a href="#"> <img src="#" alt="photo de l'annonce" height="100" width="300" ></a></td>
-<td>Nom de l'annonce</td>
-</tr>
-<tr>
-<td rowspan="3"></td>
-<td>Catégories</td>
-</tr>
-<tr>
-<td>Localisation</td>
-</tr>
-<tr>
-<td>Prix</td>
-</tr>
-</table>
-<hr>
+<ul class="white_background">
+	<li><p>9 juin</p>
+	<p>5:44</p></li>
+	<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
+	<li><p class="title">Titre de l'annonce: <span>Kiwiiiiiii c'est la vie</span></p>
+	<p>Variété: <span>Kiwi</span></p>
+	<p>Localisation: <span>Paris</span></p>
+	<p>Type: <span>Vente</span></p>
+	<p class="price">Prix: <span>5</span> €/kg</p>
+	</li>
+</ul>
 
-<table id="table_annonce">
-<tr>
-<td>Date</td>
-<td rowspan="4"><a href="#"> <img src="#" alt="photo de l'annonce" height="100" width="300" ></a></td>
-<td>Nom de l'annonce</td>
-</tr>
-<tr>
-<td rowspan="3"></td>
-<td>Catégories</td>
-</tr>
-<tr>
-<td>Localisation</td>
-</tr>
-<tr>
-<td>Prix</td>
-</tr>
-</table>
-<hr>
+
+<ul class="white_background">
+	<li><p>9 juin</p>
+	<p>5:44</p></li>
+	<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
+	<li><p class="title">Titre de l'annonce: <span>Kiwiiiiiii c'est la vie</span></p>
+	<p>Variété: <span>Kiwi</span></p>
+	<p>Localisation: <span>Paris</span></p>
+	<p>Type: <span>Vente</span></p>
+	<p class="price">Prix: <span>5</span> €/kg</p>
+	</li>
+</ul>
+
+
+</div>
 
 </div>
 
