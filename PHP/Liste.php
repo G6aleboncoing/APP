@@ -29,11 +29,11 @@
 				if(!empty($_POST['variete'])) 
 				{
 					
-					$typ= $_POST['typ'];
-					$genre= $_POST['genre'];
-					$variete= $_POST['variete'];
-					$Description= $_POST['Description'];
-					$Origine= $_POST['Origine'];
+					$typ= stripslashes(trim($_POST['typ']));
+					$genre= stripslashes(trim($_POST['genre']));
+					$variete= stripslashes(trim($_POST['variete']));
+					$Description= stripslashes(trim($_POST['Description']));
+					$Origine= stripslashes(trim($_POST['Origine']));
 				
 				
 					//préparer connexion bdd
@@ -62,7 +62,7 @@
 					INSERT INTO Listes (typ,genre,variete,Description)
 					VALUES (:typ,:genre,:variete,:Description)")
 					) 
-					{	
+					{
 						//envoi base de données
 						$i->bindParam(':typ', $typ);
 						$i->bindParam(':genre', $genre);
@@ -126,6 +126,7 @@
 				<input type="text" name="Description" id="Description" value="" placeholder="description"/> </br>
 				<input type="text" name="Origine" id="Origine" value="" placeholder="Si variete défini, origine "/> </br>
 				<input type="submit" value="Ajouter"/>
+				</form>
 			</ul>
 		</li>
 		<?php

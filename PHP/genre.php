@@ -19,13 +19,43 @@
 <?php
 if(isset($_GET['typ'])!=''&&
 isset($_GET['genre'])!='') 
-	{
+	{	
+		if (isset($_SESSION['admin'])=='1'&& $_SESSION['admin']==1)
+		{
+			if (isset($_POST['typ'])!=''&&
+				isset($_POST['genre'])!=''&&
+				isset($_POST['Description'])!='')
+			{
+					
+				$_POST['typ'] = stripslashes(trim($_POST['typ']));
+				$_POST['genre'] = stripslashes(trim($_POST['genre']));
+				$_POST['Description'] = stripslashes(trim($_POST['Description']));
+				
+				$typ=$_POST['typ'];
+				$genre=$_POST['genre'] ;
+				$Description=$_POST['Description'] ;
+				
+						$update = $bdd->prepare("UPDATE `Listes` SET  
+							`typ`=:typ,
+							`genre`=:genre,
+							`Description`=:Description,
+							WHERE `genre`=:genre ");
+							
+								$update->execute(array(
+                                    ':typ' => $typ,
+                                    ':genre' => $genre,
+                                    ':Description' => $Description,
+									':genre'=>$_GET['genre']
+									));
+			}
+		}
+		$i=0;
 		$typ=$_GET['typ'];
 		$genre=$_GET['genre'];
-		$reponse = $bdd->query("SELECT * FROM listes WHERE (typ='$typ') && (genre='$genre')&& (variete='')");
-		$i=0;
+		$reponse = $bdd->query("SELECT * FROM listes WHERE (typ='$typ') && (genre='$genre')");
+
 		// On affiche chaque entrée une à une
-		while ($donnees = $reponse->fetch()&& $i<1)
+		while ($i<1&&$donnees = $reponse->fetch())
 		{$i++;
 			?>
 			</br><!--type, genre, variete, photo, description, origine, cuisine--><!--afficher des annonces liées ? -->
@@ -82,7 +112,20 @@ isset($_GET['genre'])!='')
 			<?php
 			if(isset($_SESSION['admin']) && $_SESSION['admin']=='1' ) 
 			{ 
-				?>
+					$typ= $donnees['typ'];
+					$genre= $donnees['genre'];
+					?>
+					<li >Modifier genre : </a>
+						<ul>
+							<!--modifier id-->
+							<form method="POST" action="genre.php?typ=<?php echo $typ;?>&&genre=<?php echo $genre; ?>">
+								<input type="text" name="typ" id="typ" value="<?php echo $donnees['typ']; ?>" placeholder="Type"/></br>
+								<input type="text" name="genre" id="genre" value="<?php echo $donnees['genre']; ?>" placeholder="Genre"/> </br>
+								<input type="text" name="Description" id="Description" value="<?php echo $donnees['description']; ?>" placeholder="description"/> </br>
+								<input type="submit" value="Ajouter"/>
+							</form>
+						</ul>
+					</li>
 				<a href="supprimergenre.php?genre=<?php echo $genre;?>">supprimer ce genre</a>
 			<?php
 			}

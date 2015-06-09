@@ -47,12 +47,22 @@ CREATE TABLE messages (
 	id_expediteur int(11) NOT NULL default '0',
 	id_destinataire int(11) NOT NULL default '0',
 	reception int(11) NOT NULL default '0',
-	date datetime NOT NULL default '0000-00-00 00:00:00',
+	data datetime NOT NULL default 'CURRENT_TIMESTAMP',
 	titre text NOT NULL,
 	message text NOT NULL,
 	PRIMARY KEY  (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+CREATE TABLE commentaire (
+	id int(11) NOT NULL auto_increment,
+	id_commentateur int(11) NOT NULL default '0',
+	id_commente int(11) NOT NULL default '0',
+	note int(11) NOT NULL default '0',
+	data datetime NOT NULL default 'CURRENT_TIMESTAMP',
+	titre text NOT NULL,
+	message text NOT NULL,
+	PRIMARY KEY  (id)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE `annonces` (
 	`id_annonce` int(11) unsigned NOT NULL AUTO_INCREMENT,

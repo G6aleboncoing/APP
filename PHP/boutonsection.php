@@ -2,7 +2,8 @@
 
 <ul>
 	<!--liste des choix de base qui s'affiche que l'on soit connecté ou non-->
-	<li><a href="Accueil.php"><p id="logo">Leboncoing.com</p></a></li>
+	<li><a href="#"><img src="../images/lbc_logo.png" width="100" height="100"></a></li>
+	<li><a href="Accueil.php"><p id="logo">Leboncoing<span>.com</span></p></a></li>
 	</br>
 	<li class="maj"><a href="recherche.php">Faire une recherche</a></li>
 	<li class="maj"><a href="listeannonces.php">Liste des annonces</a></li>

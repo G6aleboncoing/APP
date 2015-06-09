@@ -17,28 +17,24 @@ include('configuration.php');
  <?php include("header.php"); ?>
 
  <?php
-	$idmessage=$_GET['idmessage'];
-	$submit=$_SESSION['ID_membre'];
-	$reponse = $bdd->query("SELECT * FROM messages WHERE id = '$idmessage' ");
+	$idcom=$_GET['idcom'];
+	$reponse = $bdd->query("SELECT * FROM commentaire WHERE id = '$idcom' ");
 
 	while ($donnees=$reponse->fetch())
 	{
-		if($submit==$donnees['id_destinataire'])
-		{
-			$reponse2 = $bdd->query("DELETE  FROM messages WHERE id = '$idmessage' ");
- 
-			$reponse2->closeCursor(); // Termine le traitement de la requête
-		}		
 
 		if($_SESSION['admin']=='1')
 		{
-			$reponse2 = $bdd->query("DELETE  FROM messages WHERE id = '$idmessage' ");
+			$reponse2 = $bdd->query("DELETE  FROM commentaire WHERE id = '$idmessage' ");
  
 			$reponse2->closeCursor(); // Termine le traitement de la requête
+			
+		echo 'L\'annonce a bien été supprimé';
+		} else {
+			header ('Location: Accueil.php');
 		}
 		
 		$reponse->closeCursor(); // Termine le traitement de la requête
-		echo 'L\'annonce a bien été supprimé';
 	}
 ?>
  

@@ -31,9 +31,8 @@
 			Pays: <?php echo $donnees['pays']; ?> <br />
 			Région: <?php echo $donnees['region']; ?> <br />
 			
-			<a href="Message.php?forme=envoi&&emaildestinataire= <?php echo $donnees['adresse_mail']; ?>" >Contacter</a
-			//voir profil
-			//ses annonces
+			<a href="Message.php?forme=envoi&&emaildestinataire= <?php echo $donnees['adresse_mail']; ?>" >Contacter</a>
+			<p><a href="profil.php?id=<?php echo $donnees['id_membre'];?>" >Voir le profil associé</a></p>
 			<hr>
 			<hr>
 		</p>

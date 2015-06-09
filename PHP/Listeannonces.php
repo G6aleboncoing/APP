@@ -16,6 +16,11 @@
 
 	<?php include("header.php"); ?>
 <div id="body_main">
+
+<div id="center_section">
+
+
+<div id="annonce_section">
 </br>
 	<?php 
 	
@@ -45,46 +50,35 @@
 	while ($donnees = $reponse->fetch())
 	{
 ?>		
-		<div class="left_section" id="annonce-section">
-			<table border = «2px»>
-				<tr>
-					<th>
-						<ul>
-							<form name="my_form" action="#result" method="post">
-								<p> 
-									<label for="nom">Titre:</label> 
-									<?php echo $donnees['titre']; ?>
-								</p>
-								<p> 
-									<label for="typ">Type:</label> 
-									<?php echo $donnees['typ']; ?>
-								</p>
-								<p> 
-									<label for="sujet">Genre:</label> 
-									<?php echo $donnees['genre']; ?>
-								</p>
-								<p> 
-									<label for="variété">Variété:</label> 
-									<?php echo $donnees['variete']; ?> 
-								</p>
-							</form>
-						</ul>
-					</th>
+
+	<ul class="white_background">
+		<li>
+			<p><?php echo $donnees['data']; ?></p>
+		</li>
+		<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
+		<li><p class="title">Titre de l'annonce: <span><?php echo $donnees['titre']; ?></span></p>
+		<p>Type: <span>		<?php echo $donnees['typ']; ?></span></p>
+		<p>Genre: <span><?php echo $donnees['genre']; ?> </span></p>
+		<p>Variété: <span><?php echo $donnees['variete']; ?> </span></p>
+		<?php
+		$idmembre=$donnees['id_membre'];
+		$reponse2 = $bdd->query("SELECT * FROM membres2 WHERE id_membre='$idmembre'");
 		
-					<td>
-						<label for="description">
-							<strong>
-							<div style="margin: 1px;">Description:</div>
-							</strong>
-						</label>
-						<?php echo $donnees['description']; ?>
-					<td>
-						<p> 
-						<label for="prix">
-							<strong>Prix:</strong>
-						</label>  
-						<?php echo $donnees['prix']; ?>€/Kg</br>
-						<?php
+			while ($donnees2 = $reponse2->fetch())
+			{
+				?>
+
+				<p>Localisation: <span><?php echo $donnees2['region']; ?></span></p>
+				
+				<a href="Message.php?forme=envoi&&emaildestinataire= <?php echo $donnees2['adresse_mail']; ?>" >Contacter le profil associé</a>
+				<p><a href="profil.php?id=<?php echo $idmembre;?>" >Voir le profil associé</a></p>
+				
+				<?php
+			}
+			?>
+		
+		<p class="price">Prix: <span><?php echo $donnees['prix']; ?> </span> €/kg</p>
+		</li><?php
 						//ici c'est pour l'admin :p
 						if(isset($_SESSION['admin'])=='1'&& $_SESSION['admin']==1)
 						{
@@ -94,19 +88,7 @@
 							<?php
 						}
 						?>
-						</p>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="3">
-					<marquee behavior="scroll" direction="left">
-					<!--Rajouter les photos de l'annonnces après -->
-					<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTI6jJmZlXkUUP9KAjaglzNcBhCpuj9oCgpA_XWcIcLglMQ-7MUCg" alt="ajouter photo">
-					</marquee>
-					</th>
-				</tr>
-			</table>
-		</div>
+	</ul>
 		</br>
 
 		<?php
@@ -131,6 +113,8 @@ if($limiteSuivante < $total2) {
 
 
 ?>
+</div>
+</div>
 </div>
  <?php include("footer.php"); ?>
 

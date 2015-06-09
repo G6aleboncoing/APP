@@ -83,6 +83,8 @@ if(	isset($_SESSION['ID_membre'])!='' )
 								echo '</br>';
 								echo 'Message : ',$donnees['message'];
 								echo '<hr>';
+								$adressemail=$donnees2['adresse_mail'];
+								echo '</br><a href="message.php?forme=envoi&&emaildestinataire=',$adressemail,'"> Répondre</a>';
 								echo '</br><a href="Supprimermessage.php?idmessage=',$id,'"> Supprimer les messages selectionnées</a>';
 							}
 				
@@ -153,7 +155,7 @@ if(	isset($_SESSION['ID_membre'])!='' )
 								$i->bindParam(':titre', $Titre);
 								$i->bindParam(':message', $message);
 								$i->execute();
-								header ('Location: Message.php?forme=envoi&&message=2');
+								header ('Location: Message.php?forme=envoi&&message=3');
 							}
 						}else
 						{

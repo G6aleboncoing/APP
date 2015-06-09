@@ -17,19 +17,60 @@
 	<?php include("header.php"); ?>
 <div id="body_main">
 
+
 <?php
 if(isset($_GET['typ'])!=''&&
 isset($_GET['genre'])!=''&&
 isset($_GET['variete'])!='') 
 	{
+		if (isset($_SESSION['admin'])=='1'&& $_SESSION['admin']==1)
+		{
+			if (isset($_POST['typ'])!=''&&
+				isset($_POST['genre'])!=''&&
+				isset($_POST['variete'])!=''&&
+				isset($_POST['Description'])!=''&&
+				isset($_POST['Origine'])!='')
+			{
+					
+				$_POST['typ'] = stripslashes(trim($_POST['typ']));
+				$_POST['genre'] = stripslashes(trim($_POST['genre']));
+				$_POST['variete'] = stripslashes(trim($_POST['variete']));
+				$_POST['Description'] = stripslashes(trim($_POST['Description']));
+				$_POST['Origine'] = stripslashes(trim($_POST['Origine']));
+				
+				$typ=$_POST['typ'];
+				$genre=$_POST['genre'] ;
+				$variete=$_POST['variete'] ;
+				$Description=$_POST['Description'] ;
+				$Origine=$_POST['Origine'] ;
+				
+						$update = $bdd->prepare("UPDATE `Listes` SET  
+							`typ`=:typ,
+							`genre`=:genre,
+							`variete`=:variete,
+							`Description`=:Description,
+							`Origine`=:Origine
+							WHERE `variete`=:variete ");
+							
+								$update->execute(array(
+                                    ':typ' => $typ,
+                                    ':genre' => $genre,
+                                    ':variete' => $variete,
+                                    ':Description' => $Description,
+									':Origine'=> $Origine,
+									':variete'=>$_GET['variete']
+									));
+			}
+		}
+		$i="0";
 		$typ=$_GET['typ'];
 		$genre=stripslashes(trim($_GET['genre']));
 		$variete=stripslashes(trim($_GET['variete']));
-		$reponse = $bdd->query("SELECT * FROM listes WHERE (typ='$typ') && (genre='$genre') &&(variete='$variete')");
+		$reponse = $bdd->query("SELECT DISTINCT * FROM listes WHERE (typ='$typ') && (genre='$genre') &&(variete='$variete')");
 
 		// On affiche chaque entrée une à une
-		while ($donnees = $reponse->fetch())
-		{
+		while ($i<"1"&&$donnees = $reponse->fetch())
+		{$i++;
 ?>
 				<a href="Liste.php">Retourner voir la liste</a>
 			</br><!--type, genre, variete, photo, description, origine, cuisine--><!--afficher des annonces liées ? -->
@@ -54,9 +95,9 @@ isset($_GET['variete'])!='')
 <?php
 					}else 
 					{ ?>
-				<tr>
+						<tr>
 							<th >
-								<?php echo $donnees['description']; ?>
+								Description : <?php echo $donnees['description']; ?>
 							</th>
 						</tr>
 						<?php
@@ -76,17 +117,32 @@ isset($_GET['variete'])!='')
 					}
 				?>
 				</table>
-			</div>
+			</div><!--lien pour les administrateurs afin de supprimer -->
+
 			<?php
-		} ?>
-					<!--lien pour les administrateurs afin de supprimer -->
-				<?php
+					
 				if(isset($_SESSION['admin']) && $_SESSION['admin']=='1' ) 
 				{ 
+					$typ= $donnees['typ'];
+					$genre= $donnees['genre'];
 					?>
+					<li >Ajouter un genre/une variété : </a>
+						<ul>
+							<!--modifier id-->
+							<form method="POST" action="Varietes.php?typ=<?php echo $typ;?>&&genre=<?php echo $genre; ?>&&variete=<?php echo $donnees['variete']; ?>">
+								<input type="text" name="typ" id="typ" value="<?php echo $donnees['typ']; ?>" placeholder="Type"/></br>
+								<input type="text" name="genre" id="genre" value="<?php echo $donnees['genre']; ?>" placeholder="Genre"/> </br>
+								<input type="text" name="variete" id="variete" value="<?php echo $donnees['variete']; ?>" placeholder="Variete"/> </br>
+								<input type="text" name="Description" id="Description" value="<?php echo $donnees['description']; ?>" placeholder="description"/> </br>
+								<input type="text" name="Origine" id="Origine" value="<?php echo $donnees['description']; ?>" placeholder="Origine "/> </br>
+								<input type="submit" value="Ajouter"/>
+							</form>
+						</ul>
+					</li>
 					<a href="supprimervariete.php?genre=<?php echo $genre;?>&&variete=<?php echo $variete;?>">supprimer cette variete</a>
 					<?php
 				}
+		} ?><?php
 	}else 
 	{
 	header ('Location: Accueil.php');
