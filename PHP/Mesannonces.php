@@ -18,7 +18,7 @@ include('configuration.php');?>
 <div id="body_main">
  
  <?php
-if(isset($_SESSION['email'])!='')// déjà , es ce que l'on est connecté
+if(isset($_SESSION['adresse_mail'])!='')// déjà , es ce que l'on est connecté
 	{
 		$i=1;
 		$submit=$_SESSION['ID_membre'];//ensuite, on va chercher les annonces correspondant à cette personne

@@ -22,91 +22,117 @@
 	</br>
 <?php
 //Vérifier qu'il n'est pas connecté
-if(	isset($_SESSION['email'])!='' ) 
-	{		
+if(	isset($_SESSION['ID_membre'])!='' ) 
+	{
 	echo "Vous êtes déjà connecter, pourquoi s'inscrire ? ;)";
-	}else 	
+	}else 
 	{
 		//vérifier si les variables sont définis, et remplis 
-		if(	isset($_POST['nom'])!='' && 
+		if(	
+		isset($_POST['civilite'])!=''&&
 		isset($_POST['prenom'])!='' && 
-		isset($_POST['email'])!='' && 
-		isset($_POST['passe'])!='' && 
-		isset($_POST['pays'])!='' &&
-		isset($_POST['ville'])!='' &&
-		isset($_POST['detail'])!=''  )
+		isset($_POST['nom'])!='' && 
+		isset($_POST['pays'])!='' && 
+		isset($_POST['region'])!='' && 
+		isset($_POST['adresse'])!='' && 
+		isset($_POST['code_postal'])!='' && 
+		isset($_POST['ville'])!='' && 
+		isset($_POST['numero_de_tel'])!='' && 
+		isset($_POST['adresse_mail'])!='' && 
+		isset($_POST['mdp'])!='' && 
+		isset($_POST['detail'])!='')
 		{
 		
-			if(!empty($_POST['nom']) 	
+			if(!empty($_POST['civilite']) 
 			&& !empty($_POST['prenom'])
-			&& !empty($_POST['passe'])
+			&& !empty($_POST['nom']) 
 			&& !empty($_POST['pays'])
+			&& !empty($_POST['region'])
+			&& !empty($_POST['code_postal'])
 			&& !empty($_POST['ville'])
-			&& !empty($_POST['detail']))
+			&& !empty($_POST['adresse_mail'])
+			&& !empty($_POST['mdp']))
+			
 			{
+				//verifier le checkbox
+				
+				
+				
 				//au cas ou, on enlève les anti slash
-		
-				$_POST['nom'] = stripslashes(trim($_POST['nom']));
+				
+				//civilite
+				//pays
+				//region
+				
 				$_POST['prenom'] = stripslashes(trim($_POST['prenom']));
-				$_POST['email'] = stripslashes(trim($_POST['email']));
-				$_POST['passe'] = stripslashes(trim($_POST['passe']));
-				$_POST['pays'] = stripslashes(trim($_POST['pays']));
+				$_POST['nom'] = stripslashes(trim($_POST['nom']));
+				$_POST['adresse'] = stripslashes(trim($_POST['adresse']));
+				$_POST['code_postal'] = stripslashes(trim($_POST['code_postal']));
 				$_POST['ville'] = stripslashes(trim($_POST['ville']));
-				$_POST['detail'] = stripslashes(trim($_POST['detail']));
+				$_POST['numero_de_tel'] = stripslashes(trim($_POST['numero_de_tel']));				
+				$_POST['adresse_mail'] = stripslashes(trim($_POST['adresse_mail']));
+				$_POST['mdp'] = stripslashes(trim($_POST['mdp']));
 	
 				//vérifier format l'adresse mail ici
-				if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['email']))
+				if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$_POST['adresse_mail']))
 				{
 					
-					$email=$_POST['email'];
-					$req=$bdd->query("SELECT * FROM membres where email = '$email'"); 
+					$adresse_mail=$_POST['adresse_mail'];
+					$req=$bdd->query("SELECT * FROM membres2 where adresse_mail = '$adresse_mail'"); 
 					$data=$req->fetch(); 
 		
 					//vérifier unicité de l'adresse ici
-					if($data['email'] == "")
+					if($data['adresse_mail'] == "")
 					{
-				
+						
 						// Alors on echappe les variables pour pouvoir les mettre en requete sql
 						$id_membre = '';
-						$nom = $_POST['nom'];
+						$civilite = $_POST['civilite'];//array
 						$prenom = $_POST['prenom'];
-						$email = $_POST['email'];
-						$mot_passe = sha1($_POST['passe']);
-						$pays = $_POST['pays'];
+						$nom = $_POST['nom'];
+						$pays = $_POST['pays'];//array
+						$region = $_POST['region'];//array
+						$adresse = $_POST['adresse'];//array
+						$code_postal = $_POST['code_postal'];//array
 						$ville = $_POST['ville'];
+						$numero_de_tel = $_POST['numero_de_tel'];
+						$mdp= sha1($_POST['mdp']);
 						$detail = $_POST['detail'];
 						$admin = 0;
-			
+						
 						//préparer connexion bdd
 						if($i = $bdd->prepare("
-							INSERT INTO membres (id_membre,nom,prenom,email,mot_passe, pays, ville, detail,admin)
-							VALUES (:id_membre,:nom,:prenom,:email,:mot_passe,:pays,:ville,:detail,:admin)")) 
-						{	
+							INSERT INTO membres2 (id_membre,civilite, prenom, nom, pays, region, adresse, code_postal, ville, numero_de_tel,adresse_mail,mdp, detail,admin)
+							VALUES (:id_membre,:civilite,:prenom ,:nom,:pays ,:region,:adresse ,:code_postal ,:ville ,:numero_de_tel ,:adresse_mail ,:mdp ,:detail ,:admin)")) 
+						{
 					
 							//envoi base de données
 							$i->bindParam(':id_membre', $id_membre);
-							$i->bindParam(':nom', $nom);
+							$i->bindParam(':civilite', $civilite);
 							$i->bindParam(':prenom', $prenom);
-							$i->bindParam(':email', $email);
-							$i->bindParam(':mot_passe', $mot_passe);
+							$i->bindParam(':nom', $nom);
 							$i->bindParam(':pays', $pays);
+							$i->bindParam(':region', $region);
+							$i->bindParam(':adresse', $adresse);
+							$i->bindParam(':code_postal', $code_postal);
 							$i->bindParam(':ville', $ville);
+							$i->bindParam(':numero_de_tel', $numero_de_tel);
+							$i->bindParam(':adresse_mail', $adresse_mail);
+							$i->bindParam(':mdp', $mdp);
 							$i->bindParam(':detail', $detail);
 							$i->bindParam(':admin', $admin);
 							$i->execute();
-
 							
-							$req=$bdd->query("SELECT * FROM membres where email = '$email'"); 
+							$req=$bdd->query("SELECT * FROM membres2 where adresse_mail = '$adresse_mail'"); 
 							$data=$req->fetch(); 
-														
-								$_SESSION['email']= $data['email'];
-								$_SESSION['passe']= $data['mot_passe'];
+							
+								$_SESSION['adresse_mail']= $data['adresse_mail'];
+								$_SESSION['mdp']= $data['mdp'];
 								$_SESSION['ID_membre']= $data['id_membre'];
 								$_SESSION['nom']= $data['nom'];
 								$_SESSION['prenom']= $data['prenom'];
-								$_SESSION['Pays']= $data['pays'];
-								$_SESSION['ville']= $data['ville'];
-								$_SESSION['detail']= $data['detail'];
+								$_SESSION['pays']= $data['pays'];
+								$_SESSION['region']= $data['region'];
 								$_SESSION['admin']= $data['admin'];
 							$req->closeCursor(); 
 						}
@@ -116,7 +142,7 @@ if(	isset($_SESSION['email'])!='' )
 						//si adresse déjà utilisé
 						echo'Cette adresse est déjà utillisé';
 					}
-	
+
 				}else
 				{
 					//si adresse pas bonne
@@ -137,34 +163,146 @@ if(	isset($_SESSION['email'])=='' )
 		</br>
 		
 		<div class="content">
-		<form method="post" action="inscription.php">
-		<ul>
-		<label for="nom">Nom</label>
-		<li><input type="text" name="nom" id="nom" value=""/><br /></li>
-		
-		<label for="prenom">Prenom</label>
-		<li><input type="text" name="prenom" id="prenom" value=""/><br /></li>
-		
-		<label for="email">Adresse email</label>
-		<input type="text" name="email" id="email" value=""/><br />
-		
-		<label for="passe">Mot de passe</label>
-		<input type="password" name="passe" id="passe" value=""/><br />
 
-		<label for="pays">Pays</label>
-		<input type="text" name="pays" id="pays" value=""/><br />
-	
-		<label for="ville">Ville</label>
-		<input type="text" name="ville" id="ville" value=""/><br />
+		<form method="post" action="#">
 
-		<label for="detail">Informations personnelles</label>
-		<input type="text" name="detail" id="detail" value=""/>	<br />
-		
-		<input type="hidden" name="validate" id="validate" value="ok"/>
-		
-		<input type="submit" name="envoi" value="Envoyer"/>
-		</ul>
+			<div class="box">
+				<h2>Vos Coordonnées</h2>
+				<div class="box_ribbon">
+				</div>
+			</div>
+
+			<ul>
+				<li><label class="obligatoire" for="civilite">Civilité <span>*</span>:&nbsp;</label>
+					<select name="civilite" id="civilite">
+						<option value="">Civilité</option>
+						<option value="Monsieur">M</option>
+						<option value="Madame">Mme</option>
+						<option value="Mademoiselle">Mlle</option>
+					</select>
+				</li>
+				
+				<li><label class="obligatoire" for="prenom">Prénom <span>*</span>:&nbsp;</label>
+					<input type="text" name="prenom" id="prenom" placeholder="Prénom">
+				</li>
+				
+				<li><label class="obligatoire" for="nom">Nom <span>*</span>:&nbsp;</label>
+					<input type="text" name="nom" id="nom" placeholder="Nom">
+				</li>
+				
+				<li><label class="obligatoire">Pays <span>*</span>:&nbsp;</label>
+				<select name="pays" id="pays">
+					<option value="">Pays</option>
+					<option value="france">France</option>
+					<option value="espagne">Espagne</option>
+					<option value="royaume-uni">Royaume-Uni</option>
+				</select>
+				</li>
+			
+				<li><label class="obligatoire" for="region">Région <span>*</span>:&nbsp;</label>
+				<select name="region" id="region" >
+					<option value="">Région</option>
+					<?php 
+					$reponse = $bdd->query("SELECT DISTINCT nom_region FROM `region` ORDER BY id_region ASC ");
+					while ($donnees = $reponse->fetch())
+					{ 
+						?>
+						<option value="<?php echo $donnees['nom_region'];?>"> <?php echo $donnees['nom_region'];?></option>	
+						<?php
+					}
+					?>
+				</select>
+				</li>
+				
+				<li><label class="obligatoire" for="adresse">Adresse <span> </span>:&nbsp;</label>
+					<input type="text" name="adresse" id="adresse" placeholder="Adresse">
+				</li>
+				
+				<li><label class="obligatoire" for="code_postal">Code Postal <span>*</span>:&nbsp;</label>
+					<input type="int" name="code_postal" id="code_postal" placeholder="Code Postal">
+				</li>
+				
+				<li><label class="obligatoire" for="ville">Ville <span>*</span>:&nbsp;</label>
+					<input type="text" name="ville" id="ville" placeholder="Ville">
+				</li>
+				
+				<li><label class="obligatoire" for="numero_de_tel">Telephone <span> </span>:&nbsp;</label>
+					<input type="tel" name="numero_de_tel" id="numero_de_tel" placeholder="ex:066858XXXX">
+				</li>
+
+				<li><label class="obligatoire" for="detail">Detail <span> </span>:&nbsp;</label>
+					<input type="text" name="detail" id="detail" placeholder="detail">
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+			</ul>
+
+			<div class="box">
+				<h2>Votre Adresse Email</h2>
+				<div class="box_ribbon">
+				</div>
+			</div>
+
+			<ul>
+				<li><label for="adresse_mail">Email :&nbsp;<span>*</span></label>
+					<input type="email" name="adresse_mail" id="adresse_mail" placeholder="ex:test@isep.fr">
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+			</ul>
+
+			<div class="box">
+				<h2>Votre Mot de mdp</h2>
+				<div class="box_ribbon">
+				</div>
+			</div>
+
+			<ul>
+				<li><label  for="mdp">Mot de mdp :&nbsp;<span>*</span></label>
+					<input type="password" name="mdp" id="mdp">
+				</li>
+				
+				<li><label  for="confirmation_mdp">Confirmez le mot de mdp :&nbsp;</label>
+					<input type="password" name="confirmation_mdp" id="confirmation_mdp">
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+				
+				<li>
+					<hr>
+				</li>
+				
+				<li><label>&nbsp;</label>
+					<input type="checkbox" name="check_condition_g" id="check_condition_g">J'accepte les conditions générales d'utilisation
+				</li>
+				
+				
+				
+				<li>
+					(<span>*</span>)Champs obligatoires
+				</li>
+				
+				
+				<li><label>&nbsp;</label>
+					<input type="submit" value="Valider">
+				</li>
+			</ul>
 		</form>
+
 	
 		</div>
 		

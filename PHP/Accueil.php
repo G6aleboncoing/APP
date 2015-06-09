@@ -80,6 +80,7 @@
 				<input type="text" name="Description" id="Description" value="" placeholder="description"/> </br>
 				<input type="text" name="Origine" id="Origine" value="" placeholder="Si variete défini, origine "/> </br>
 				<input type="submit" value="Ajouter"/>
+				</form>
 			</ul>
 		</li>
 		<?php
@@ -88,7 +89,16 @@
 	</div>
 
 	<div class="annonce_section" id="annonce_section" >
+	
 
+		
+	<form method="post" action="recherche.php">
+		<label for="query">Entrer votre recherche </label>
+		<input type="search" name="submit" maxlength="50" size="30" placeholder="Rechercher">
+		<input type="submit" value="Rechercher">
+	</form>
+	</br>
+	
 	<table id="table_annonce">
 	<tr>
 		<td>Date</td>
@@ -114,14 +124,6 @@
 
 	<hr>
 </div>
-</br>
-</br></br></br></Br></br></br></br></br></br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 
 <?php include("footer.php"); ?>
 

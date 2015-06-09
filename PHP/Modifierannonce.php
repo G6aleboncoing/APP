@@ -34,7 +34,7 @@ if(	true )
 			&& !empty($_POST['variete'])
 			&& !empty($_POST['prix']))
 			{
-										
+				
 				//Alors on enleve lechappement 
 
 				$_POST['titre'] = stripslashes(trim($_POST['titre']));	
@@ -51,7 +51,6 @@ if(	true )
 				$variete=  implode(",", $variete_Array);
 				$prix = $_POST['prix'];				
 				$idannonce = $_GET['idannonce'];
-			
 						//préparer connexion bdd
 						
 						$update = $bdd->prepare("UPDATE `annonces` SET  
@@ -69,8 +68,7 @@ if(	true )
                                     ':varietes' => $variete,
                                     ':prixe' => $prix,
 									':idannonce'=> $_GET['idannonce']
-									));				
-								
+									));
 			} else 
 			{
 		
@@ -79,7 +77,7 @@ if(	true )
 		}
 	} 
 
-if(	isset($_SESSION['email'])!='' ) 
+if(	isset($_SESSION['adresse_mail'])!='' ) 
 	{ 	$idannonce=$_GET['idannonce'];
 		// vérifier id_annonce et id_membre
 		$submit=$_SESSION['ID_membre'];
