@@ -54,7 +54,7 @@ PRIMARY KEY (`id_membre`)
 
 
 
-CREATE TABLE ‘region’ (
+CREATE TABLE `region` (
 		`id_region` int(11) NOT NULL AUTO_INCREMENT,
 		`nom_region` varchar(30)  NOT NULL,
 		
