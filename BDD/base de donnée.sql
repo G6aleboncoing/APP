@@ -1,3 +1,25 @@
+
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`id_commentateur` int(11) NOT NULL DEFAULT '0',
+  
+	`id_commente` int(11) NOT NULL DEFAULT '0',
+  
+	`note` int(11) NOT NULL DEFAULT '0',
+  
+	`data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  
+	`titre` text NOT NULL,
+  
+	`message` text NOT NULL,
+  
+
+PRIMARY KEY (`id`)
+
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+
 CREATE TABLE `membres2` (
 	
 	`id_membre` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -78,7 +100,7 @@ CREATE TABLE commentaire (
 	id_commentateur int(11) NOT NULL default '0',
 	id_commente int(11) NOT NULL default '0',
 	note int(11) NOT NULL default '0',
-	data datetime NOT NULL default 'CURRENT_TIMESTAMP',
+	data datetime NOT NULL default CURRENT_TIMESTAMP,
 	titre text NOT NULL,
 	message text NOT NULL,
 	PRIMARY KEY  (id)
