@@ -48,6 +48,8 @@ CREATE TABLE `membres2` (
 
 	`admin` int(10) NOT NULL,
 	
+
+	
 	
 PRIMARY KEY (`id_membre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -84,7 +86,7 @@ INSERT INTO `region` VALUES (20,'Poitou-Charentes');
 INSERT INTO `region` VALUES (21,'Provence-Alpes-Côte d\'Azur');
 INSERT INTO `region` VALUES (22,'Rhône-Alpes');
 
-CREATE TABLE messages (
+CREATE TABLE `messages` (
 	id int(11) NOT NULL auto_increment,
 	id_expediteur int(11) NOT NULL default '0',
 	id_destinataire int(11) NOT NULL default '0',
@@ -132,54 +134,52 @@ ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 INSERT INTO `listes` VALUES (1, 'légume' , 'Carottes', 'Originales' , 'Se déguste cuite ou crue. Délicieuses en salade, cuites avec une viande, en Bouillon');
 
-INSERT INTO `listes` VALUES (1, 'légume' , 'Carottes', 'Vertes' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
+INSERT INTO `listes` VALUES (2, 'légume' , 'Carottes', 'Vertes' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
 
-INSERT INTO `listes` VALUES (1, 'légume' , 'Carottes', 'Jaunes' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
+INSERT INTO `listes` VALUES (3, 'légume' , 'Carottes', 'Jaunes' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
 
-INSERT INTO `listes` VALUES (2, 'légume' , 'Carottes', 'Noires' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
+INSERT INTO `listes` VALUES (4, 'légume' , 'Carottes', 'Noires' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
 
-INSERT INTO `listes` VALUES (3, 'légume' , 'Haricots', 'Verts' , 'Se déguste cuit peut-être mis en salade ou accompagné de viande ou poisson');
+INSERT INTO `listes` VALUES (5, 'légume' , 'Haricots', 'Verts' , 'Se déguste cuit peut-être mis en salade ou accompagné de viande ou poisson');
 
-INSERT INTO `listes` VALUES (4, 'légume' , 'Haricots', 'Blancs' , 'Les haricots se cuisinent en plat de légume, en plat composé avec ou sans viande, ou en soupe');
+INSERT INTO `listes` VALUES (6, 'légume' , 'Haricots', 'Blancs' , 'Les haricots se cuisinent en plat de légume, en plat composé avec ou sans viande, ou en soupe');
 
-INSERT INTO `listes` VALUES (5, 'légume' , 'Haricots', 'Rouges' , 'Les haricots se cuisinent en plat de légume, en plat composé avec ou sans viande, ou en soupe ');
+INSERT INTO `listes` VALUES (7, 'légume' , 'Haricots', 'Rouges' , 'Les haricots se cuisinent en plat de légume, en plat composé avec ou sans viande, ou en soupe ');
 
-INSERT INTO `listes` VALUES (6, 'légume' , 'Tomates', 'Rouges' , 'La tomate peut se consommer soit crue, soit cuite. Cuite, la tomate se prépare de diverses manières: sautée, farcie, en sauce… ');
+INSERT INTO `listes` VALUES (8, 'légume' , 'Tomates', 'Rouges' , 'La tomate peut se consommer soit crue, soit cuite. Cuite, la tomate se prépare de diverses manières: sautée, farcie, en sauce… ');
 
-INSERT INTO `listes` VALUES (7, 'légume' , 'Tomates', 'Noires' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
-INSERT INTO `listes` VALUES (7, 'légume' , 'Tomates', 'Cerise' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
+INSERT INTO `listes` VALUES (9, 'légume' , 'Tomates', 'Noires' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
 
-INSERT INTO `listes` VALUES (8, 'légume' , 'Celeri', 'Branche ' , ' Cru ou cuit, émincé, en bâtonnets ou en dés, le céleri-branche est un légume aussi facile à préparer qu’à cuisiner.');
-INSERT INTO `listes` VALUES (9, 'légume' , 'Celeri', 'rave' , 'Ce légume peut s’accommoder de très nombreuses manières, aussi bien en salade, qu’en gratin, ou encore en soupe.');
+INSERT INTO `listes` VALUES (10, 'légume' , 'Tomates', 'Cerise' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
 
-INSERT INTO `listes` VALUES (10, 'légume', 'Pomme de terre', 'nouvelle' ,'Les pommes de terre nouvelles sont les pommes de terre récoltées alors qu’elles sont encore très jeunes, avant que leur sucre se soit transformé en amidon. Elles sont petites avec une peau fine et leur chair est douce et crémeuse lorsque cuite.', 'Les pommes de terre nouvelles sont meilleures rôties ou bouillies que frites');
+INSERT INTO `listes` VALUES (11, 'légume' , 'Celeri', 'Branche ' , ' Cru ou cuit, émincé, en bâtonnets ou en dés, le céleri-branche est un légume aussi facile à préparer qu’à cuisiner.');
 
-INSERT INTO `listes` VALUES (12, 'légume', 'Panai', 'Légume racine de la famille de la carotte, le panais est un légume oublié à l'agréable saveur sucrée riche en folates et en vitamine C, qui apporte fibres et antioxydants.' , 'On peut le râper pour donner une touche originale aux salades
-Tranché finement et revenu à la poêle avec un peu de matière grasse, c'est un régal
-Râpé avec pommes de terre ou carottes, on peut en faire de délicieuses galettes à faire revenir dans un peu d'huile
-Il a sa place dans les soupes, le pot-au-feu, avec les autres légumes du couscous...
-La purée de panais est un délice. Il faut l'y mélanger pour moitié avec des pommes de terre pour atténuer sa saveur un peu forte ');
+INSERT INTO `listes` VALUES (12, 'légume' , 'Celeri', 'rave' , 'Ce légume peut s’accommoder de très nombreuses manières, aussi bien en salade, qu’en gratin, ou encore en soupe.');
 
-INSERT INTO `listes` VALUES (13, 'fruit' , 'Pomme' , 'royal gala', 'Les pommes Gala sont plutôt petites. Rouge orangé à rayures verticales, elles résistent bien aux chocs bien qu'elles aient une peau très fine. La Gala est une pomme très sucrée, faiblement acide avec une petite pointe d’amertume ; ferme et juteuse, très croquante, la gala est tonique.',  '', 'La variété a été créée en Nouvelle-Zélande ');
+INSERT INTO `listes` VALUES (14, 'légume', 'Pomme de terre', 'nouvelle' ,'Les pommes de terre nouvelles sont les pommes de terre récoltées alors qu’elles sont encore très jeunes, avant que leur sucre se soit transformé en amidon. Elles sont petites avec une peau fine et leur chair est douce et crémeuse lorsque cuite. Les pommes de terre nouvelles sont meilleures rôties ou bouillies que frites');
 
-INSERT INTO `listes` VALUES (13, 'fruit' , 'Pomme' , 'Fuji', ' ');
+INSERT INTO `listes` VALUES (15, 'légume', 'Panai', ' ','Légume racine de la famille de la carotte, le panais est un légume oublié à l\'agréable saveur sucrée riche en folates et en vitamine C, qui apporte fibres et antioxydants.');
 
-INSERT INTO `listes` VALUES (14, 'fruit' , 'Pomme' , 'granit', ' ');
+INSERT INTO `listes` VALUES (16, 'fruit' , 'Pomme' , 'royal gala', 'Les pommes Gala sont plutôt petites. Rouge orangé à rayures verticales, elles résistent bien aux chocs bien qu\'elles aient une peau très fine. La Gala est une pomme très sucrée, faiblement acide avec une petite pointe d’amertume ; ferme et juteuse, très croquante, la gala est tonique.La variété a été créée en Nouvelle-Zélande');
 
-INSERT INTO `listes` VALUES (15, 'fruit' , 'Banane' , '', ' ');
+INSERT INTO `listes` VALUES (17, 'fruit' , 'Pomme' , 'Fuji', ' ');
 
-INSERT INTO `listes` VALUES (16, 'fruit' , 'Ananas' , ' ', ' ');
+INSERT INTO `listes` VALUES (18, 'fruit' , 'Pomme' , 'granit', ' ');
 
-INSERT INTO `listes` VALUES (17, 'fruit' , 'Pêche' , 'Blanche', ' ');
+INSERT INTO `listes` VALUES (19, 'fruit' , 'Banane' , '', ' ');
 
-INSERT INTO `listes` VALUES (18, 'fruit' , 'Pêche' , 'Plate', ' ');
+INSERT INTO `listes` VALUES (20, 'fruit' , 'Ananas' , ' ', ' ');
 
-INSERT INTO `listes` VALUES (19, 'fruit' , 'Abricot' , ' ', ' ');
+INSERT INTO `listes` VALUES (21, 'fruit' , 'Pêche' , 'Blanche', ' ');
 
-INSERT INTO `listes` VALUES (20, 'fruit' , 'Abricot' , '', ' ');
+INSERT INTO `listes` VALUES (22, 'fruit' , 'Pêche' , 'Plate', ' ');
 
-INSERT INTO `listes` VALUES (21, 'fruit' , 'Melon' , 'Vert ', 'Se mange en entrée, accompagné de porto et de jambon de parme, se déguste en apéritif. Très bon ingrédient pour une salade de fruit');
+INSERT INTO `listes` VALUES (23, 'fruit' , 'Abricot' , ' ', ' ');
 
-INSERT INTO `listes` VALUES (21, 'fruit' , 'Melon' , 'Originals ', 'Se mange en entrée, accompagné de porto et de jambon de parme, se déguste en apéritif. Très bon ingrédient pour une salade de fruit');
+INSERT INTO `listes` VALUES (24, 'fruit' , 'Abricot' , '', ' ');
 
-INSERT INTO `listes` VALUES (22, 'fruit' , 'Pastèque' , ' ', 'Se mange nature en dessert ou en salade de fruit');
+INSERT INTO `listes` VALUES (25, 'fruit' , 'Melon' , 'Vert ', 'Se mange en entrée, accompagné de porto et de jambon de parme, se déguste en apéritif. Très bon ingrédient pour une salade de fruit');
+
+INSERT INTO `listes` VALUES (26, 'fruit' , 'Melon' , 'Originals ', 'Se mange en entrée, accompagné de porto et de jambon de parme, se déguste en apéritif. Très bon ingrédient pour une salade de fruit');
+
+INSERT INTO `listes` VALUES (27, 'fruit' , 'Pastèque' , ' ', 'Se mange nature en dessert ou en salade de fruit');
