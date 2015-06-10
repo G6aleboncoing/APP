@@ -138,7 +138,7 @@ INSERT INTO `listes` VALUES (1, 'légume' , 'Carottes', 'Jaunes' , 'Délicieuses e
 
 INSERT INTO `listes` VALUES (2, 'légume' , 'Carottes', 'Noires' , 'Délicieuses en salade, servies en apéritif avec une sauce dressing');
 
-INSERT INTO `listes` VALUES (3, 'légume' , 'Haricots', 'Verts' , 'Se déguste cuit; peut-être mis en salade ou accompagné d'une viande ou poisson');
+INSERT INTO `listes` VALUES (3, 'légume' , 'Haricots', 'Verts' , 'Se déguste cuit peut-être mis en salade ou accompagné de viande ou poisson');
 
 INSERT INTO `listes` VALUES (4, 'légume' , 'Haricots', 'Blancs' , 'Les haricots se cuisinent en plat de légume, en plat composé avec ou sans viande, ou en soupe');
 
