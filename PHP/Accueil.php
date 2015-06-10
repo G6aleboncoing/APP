@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" media="screen" type="text/css" href="../CSS/main.css" />
-<link rel="icon" type="image/png" href="images/coing.png" />
+<link href='http://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/png" href="images/lbc_logo.png" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
 <title>LeBonCoing</title>
@@ -19,25 +20,23 @@
  
 	<div id="slideshow">
 		<ul>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="Accueil.php"> <img src="images/banniere.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+			<li><a href="PageAccueil.html"> <img src="images/banniere_1.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+			<li><a href="PageAccueil.html"> <img src="images/banniere_2.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+			<li><a href="PageAccueil.html"> <img src="images/banniere_3.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
 		</ul>
 	</div>
 
-	<div id="categories_section" class="white_background">
+<div id="categories_section" class="white_background">
 	
 	
-<h4>Info Catégories</h4>
-		<hr>
+<h3>Info Catégories</h3>
 	<?php
 	$listetyp = $bdd->query("SELECT DISTINCT typ FROM `listes` ORDER BY typ ASC ");
 	while ($donnees = $listetyp->fetch())
 	{ 
 		?>
 		<li>
-			<a href="#"><?php echo $donnees['typ'];?></a>
+			<h4><?php echo $donnees['typ'];?></h4>
 			<ul>
 				<?php
 				$typ=$donnees['typ'];

@@ -41,25 +41,21 @@
 	
 	if(	isset($_SESSION['adresse_mail'])!='' && isset($_SESSION['mdp'])!='' ) 
 	{//ce cas ne devrait pas se produire vu que on enlève le bouton en question quand on est connecté, mais au cas ou, on laisse la possibilité de sortir
-		echo $_SESSION['adresse_mail'],'<img src="#" id="close_boutton" class="float_right" alt="Bouton de fermeture"  title="Accueil" >';
+		echo $_SESSION['adresse_mail'],'<img src="images/close_button.png" id="close_button" class="float_right" alt="Bouton de fermeture" height="30" width="30" title="Accueil" >';
 
 	}else 
 	{//un formulaire simple qui appel "connexion" et pis bah voilà quoi
 		echo'
 		<form action="connexion.php" method="post" id="password_section">
-		<img src="#" id="close_boutton" class="float_right" alt="Bouton de fermeture"  title="Accueil" >
+		<img src="images/close_button.png" id="close_button" class="float_right" alt="Bouton de fermeture" height="30" width="30" title="Accueil" >
 
-		<html>
 		<h2>Connexion</h2>
-		<form action="connexion.php" method="post">
-
-		<label for="adresse_mail">Adresse email</label>
-		<input class="green_input" type="text" name="adresse_mail" value=""/>
-
-		<label for="mdp">Mot de passe</label>
-		<input class="green_input" type="password" name="mdp" value=""/>
-
-		<input class="float_right" type="submit" value="Se connecter"/>
+		<h3>Adresse e-mail</h3>
+		<input class="green_input" type="email" name="adresse_mail">
+		<h3>Mot de passe</h3>
+		<input class="green_input" type="password" name="mdp">
+		<input class="float_right" id="login_boutton" type="submit" value="Se connecter"><br>
+		<p><a href="#" id="password_creation">Créer votre compte</a> ou <a href="#" id="password_forgotten">Mot de passe oublié ?</a>
 
 		</form>';
 	}

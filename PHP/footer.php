@@ -1,6 +1,5 @@
-<footer id="footermain">
+<footer>
 <!--c'est le footer que l'on met en bas partout-->
-<hr>
 	<ul>
 		<li><a href="Aide.php">Aide</a></li>
 		<li><a href="FAQ.php">FAQ</a></li>
