@@ -43,7 +43,7 @@
 				$listegenre = $bdd->query("SELECT DISTINCT genre FROM `listes` where typ='$typ' ORDER BY genre ASC ");
 				while ($donnees = $listegenre->fetch())
 				{?>
-					<li><a href="genre.php?typ=<?php echo $typ;?>&&genre=<?php echo $donnees['genre']; ?>"><?php echo $donnees['genre'];?></a>
+					<li><h4><a href="genre.php?typ=<?php echo $typ;?>&&genre=<?php echo $donnees['genre']; ?>"><?php echo $donnees['genre'];?></a></h4>
 						<ul>
 							<?php
 							$genre=$donnees['genre'];
@@ -69,7 +69,7 @@
 	if(isset($_SESSION['admin'])=='1'&& $_SESSION['admin']==1)
 	{
 		?>
-		<li >Ajouter un genre/une variété : </a>
+		<li ><h4>Ajouter un genre/une variété : </a></h4>
 			<ul>
 				 <!--modifier id-->
 				<form method="POST" action="Liste.php">									
@@ -121,7 +121,6 @@
 
 	</div>
 
-	<hr>
 </div>
 
 <?php include("footer.php"); ?>

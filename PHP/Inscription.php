@@ -4,7 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" media="screen" type="text/css" href="../CSS/main.css" />
-<link rel="icon" type="image/png" href="images/coing.png" />
+<link href='http://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/png" href="images/lbc_logo.png" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
 <title>LeBonCoing</title>
@@ -18,6 +19,8 @@
 
 
 <div id="formulaire_annonce">
+
+<div id="inscription_section">
 
 	</br>
 <?php
@@ -163,8 +166,10 @@ if(	isset($_SESSION['email'])=='' )
 		</br>
 		
 		<div class="content">
+		
+		<h1>Création de compte</h1>
 
-		<form method="post" action="#">
+		<form method="post" action="#" onSubmit="return verify(this.mdp, this.confirmation_mdp)">
 
 			<div class="box">
 				<h2>Vos Coordonnées</h2>
@@ -234,13 +239,8 @@ if(	isset($_SESSION['email'])=='' )
 					<input type="text" name="detail" id="detail" placeholder="detail">
 				</li>
 				
-				<li>
 					<hr>
-				</li>
-				
-				<li>
 					<hr>
-				</li>
 			</ul>
 
 			<div class="box">
@@ -254,36 +254,32 @@ if(	isset($_SESSION['email'])=='' )
 					<input type="email" name="adresse_mail" id="adresse_mail" placeholder="ex:test@isep.fr">
 				</li>
 				
-				<li>
 					<hr>
-				</li>
-				
-				<li>
 					<hr>
-				</li>
 			</ul>
 
 			<div class="box">
-				<h2>Votre Mot de mdp</h2>
+				<h2>Votre Mot de Passe</h2>
 				<div class="box_ribbon">
 				</div>
 			</div>
 
 			<ul>
-				<li><label  for="mdp">Mot de mdp :&nbsp;<span>*</span></label>
+				<li><label  for="mdp">Mot de mdp <span>*</span>:&nbsp;</label>
 					<input type="password" name="mdp" id="mdp">
 				</li>
 				
 				<li><label  for="confirmation_mdp">Confirmez le mot de mdp :&nbsp;</label>
 					<input type="password" name="confirmation_mdp" id="confirmation_mdp">
 				</li>
+				<li><label>&nbsp;</label>
+					<div class="" id="passwordStrength">&nbsp;</div></li>
+
+					<hr>
+					<hr>
 				
 				<li>
-					<hr>
-				</li>
-				
-				<li>
-					<hr>
+					(<span>*</span>)Champs obligatoires
 				</li>
 				
 				<li><label>&nbsp;</label>
@@ -292,9 +288,7 @@ if(	isset($_SESSION['email'])=='' )
 				
 				
 				
-				<li>
-					(<span>*</span>)Champs obligatoires
-				</li>
+				
 				
 				
 				<li><label>&nbsp;</label>
@@ -312,6 +306,8 @@ if(	isset($_SESSION['email'])=='' )
 		echo'vous êtes déjà inscrit(e)';
 	}
 ?>
+</div>
+
 </div>
 
 </div>

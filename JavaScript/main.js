@@ -91,7 +91,9 @@ $(document).ready(function(){
 		$(this).next().slideToggle("slow");
 
     });
+	
 });
+
 
 
 // Vérification mot de passe//
