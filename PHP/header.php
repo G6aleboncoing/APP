@@ -11,7 +11,7 @@
 		</select>
 	</li>
 	<li>
-		<a href="#" id="test_link">Nous Contacter</a>
+		<a href="ContactUs.php" id="test_link">Nous Contacter</a>
 	</li> 
 	
 

@@ -151,8 +151,8 @@
 	<div class="annonce_section" id="annonce_section" >
 	
 <ul class="white_background">
-	<li><p>9 juin</p>
-	<p>5:44</p></li>
+	<li><p>11 juin</p>
+	<p>6:48</p></li>
 	<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
 	<li><p class="title">Titre de l'annonce: <span>Kiwiiiiiii c'est la vie</span></p>
 	<p>Variété: <span>Kiwi</span></p>
@@ -165,12 +165,12 @@
 <ul class="white_background">
 	<li><p>9 juin</p>
 	<p>5:44</p></li>
-	<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
-	<li><p class="title">Titre de l'annonce: <span>Kiwiiiiiii c'est la vie</span></p>
-	<p>Variété: <span>Kiwi</span></p>
+	<li><a href="#"> <img src="images/pomme.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
+	<li><p class="title">Titre de l'annonce: <span>Vive les pommes</span></p>
+	<p>Variété: <span>Pomme</span></p>
 	<p>Localisation: <span>Paris</span></p>
 	<p>Type: <span>Vente</span></p>
-	<p class="price">Prix: <span>5</span> €/kg</p>
+	<p class="price">Prix: <span>3</span> €/kg</p>
 	</li>
 </ul>
 
