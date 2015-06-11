@@ -25,6 +25,63 @@
 			<li><a href="PageAccueil.html"> <img src="images/banniere_3.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
 		</ul>
 	</div>
+	
+<div id="recherche_section">
+	
+		<form method="post" action="recherche.php">
+
+
+				<ul>
+						
+						<li><input class="recherche_li" type="search" name="titre" id="titre" value="" placeholder="Titre"/></li>
+						<li><select name="typ[]" class="recherche_li" id="type" onchange="go()"><option value="">--Type--</option>
+			<?php
+			//verification blabla
+			$reponse = $bdd->query("SELECT DISTINCT typ FROM `listes` ORDER BY typ ASC ");
+			while ($donnees = $reponse->fetch())
+			{ 
+				?>
+				<option value="<?php echo $donnees['typ'];?>"> <?php echo $donnees['typ'];?></option>	
+				<?php
+			}
+				?>
+		
+			</select>
+		</li>
+
+		<li>	
+				<select name="genre[]" class="recherche_li" id="genre">
+				<option value="" >--Catégories--</option>
+				<?php
+				//verification blabla
+				$reponse = $bdd->query("SELECT DISTINCT genre FROM `listes` ORDER BY genre ASC ");
+				while ($donnees = $reponse->fetch())
+				{ 
+					?>
+					<option value="<?php echo $donnees['genre'];?>"> <?php echo $donnees['genre'];?></option>	
+					<?php
+				}
+				?>
+		
+				</select>
+		</li>
+				
+
+		<li>
+				<ul><li><select name='variete' class="recherche_li" id="variete">
+					<option value=''>--Variétés--</option>
+				</select></li>
+				<li><input type="submit" id="adv_search_submit" name="envoie" class="recherche_li" value="Envoyer"/></li>
+				</ul>
+
+
+		</li>
+		
+		</ul>
+		
+		</form>
+
+</div>
 
 <div id="categories_section" class="white_background">
 	
@@ -87,16 +144,9 @@
 	?>
 	</div>
 
-	<div class="annonce_section" id="annonce_section" >
-	
 
 		
-	<form method="post" action="recherche.php">
-		<label for="query">Entrer votre recherche </label>
-		<input type="search" name="submit" maxlength="50" size="30" placeholder="Rechercher">
-		<input type="submit" value="Rechercher">
-	</form>
-	</br>
+	<div class="annonce_section" id="annonce_section" >
 	
 	<table id="table_annonce">
 	<tr>

@@ -4,10 +4,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" media="screen" type="text/css" href="../CSS/main.css" />
-<link rel="icon" type="image/png" href="images/coing.png" />
+<link href='http://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/png" href="images/lbc_logo.png" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
-<script src="../JavaScript/jquery.js"></script>
 <title>LeBonCoing</title>
 			<script type='text/javascript'>
 		</script>
@@ -95,9 +95,9 @@ if (isset($_SESSION['adresse_mail'])!='')
 <div id="formulaire_annonce">
 
 		<form method="post" action="creerannonce.php">
-		<div class="box15">
+		<div class="box">
 			<h2>Catégories</h2>
-			<div class="box15_ribbon"></div>
+			<div class="box_ribbon"></div>
 		</div>
 		<ul>
 		
@@ -154,9 +154,9 @@ if (isset($_SESSION['adresse_mail'])!='')
 		
 		-->
 		
-		<div class="box15">
+		<div class="box">
 		<h2>Votre Annonce</h2>
-		<div class="box15_ribbon"></div>
+		<div class="box_ribbon"></div>
 		</div>
 		<ul>
 		<label for="titre">Titre</label>
@@ -167,7 +167,7 @@ if (isset($_SESSION['adresse_mail'])!='')
 
 		<!-- s'occuper de la comparaison des prix (> = <)-->
 		<label for="prix">Prix au kilos</label>
-		<input type="int" name="prix" id="prix" value=""/><br />
+		<input type="int" name="prix" id="prix" value=""/><br/>
 
 		<input type="submit" name="envoi" value="Envoyer"/>
 

@@ -4,7 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" media="screen" type="text/css" href="../CSS/main.css" />
-<link rel="icon" type="image/png" href="images/coing.png" />
+<link href='http://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/png" href="images/lbc_logo.png" />
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../JavaScript/main.js"></script>
 <title>LeBonCoing</title>
@@ -16,10 +17,11 @@
 
 
 <div id="body_main">
-	<div class="box15">
+	<div class="box">
 		<h2>Recherche simple</h2>
-	<div class="box15_ribbon"></div>
-		</div>
+	<div class="box_ribbon"></div>
+		</div><br>
+		
 	<form method="post" action="recherche.php">
 		<label for="query">Entrer votre recherche </label>
 		<input type="search" name="submit" maxlength="50" size="30" placeholder="Rechercher">
@@ -60,21 +62,23 @@ if(	isset($_POST['submit'])!='')
 	?>
 	
 	</br>
-		<form method="post" action="recherche.php">
-		<div class="box15">
+	
+	
+		<div class="box">
 			<h2>Recherche avancée</h2>
-			<div class="box15_ribbon"></div>
+			<div class="box_ribbon"></div>
 		</div>
-		</br>
-				<ul>
-		<label for="query">Titre d'annonces :</label>
-		<li><input type="text" name="titre" id="titre" value="" placeholder="Titre"/><br /></li>
 		
+		
+<div id="recherche_section">
+	
+		<form method="post" action="recherche.php">
+
+
 				<ul>
-		<p>	<label for="Typ">Type :</label>
-		<li>
-			<select name="typ[]" id="type" onchange="go()">
-			<option value="">--type--</option>
+						
+						<li><input class="recherche_li" type="search" name="titre" id="titre" value="" placeholder="Titre"/></li>
+						<li><select name="typ[]" class="recherche_li" id="type" onchange="go()"><option value="">--Type--</option>
 			<?php
 			//verification blabla
 			$reponse = $bdd->query("SELECT DISTINCT typ FROM `listes` ORDER BY typ ASC ");
@@ -88,12 +92,10 @@ if(	isset($_POST['submit'])!='')
 		
 			</select>
 		</li>
-		</p>
-		
-				<label>genre : </label>
-				<div id="genre">
-				<select name="genre[]" id="genre">
-				<option value="" >--genre--</option>
+
+		<li>	
+				<select name="genre[]" class="recherche_li" id="genre">
+				<option value="" >--Catégories--</option>
 				<?php
 				//verification blabla
 				$reponse = $bdd->query("SELECT DISTINCT genre FROM `listes` ORDER BY genre ASC ");
@@ -106,22 +108,23 @@ if(	isset($_POST['submit'])!='')
 				?>
 		
 				</select>
-				</div>
+		</li>
 				
-				</br>
-				<label>Variete</label>
-				<div id='variete' >
-				<select name='variete' id="variete">
-					<option value=''>--Choisir un genre--</option>
-				</select>
-				</div>
 
+		<li>
+				<ul><li><select name='variete' class="recherche_li" id="variete">
+					<option value=''>--Variétés--</option>
+				</select></li>
+				<li><input type="submit" id="adv_search_submit" name="envoie" class="recherche_li" value="Envoyer"/></li>
+				</ul>
+
+
+		</li>
 		
 		</ul>
-		</br>
 				<!-- s'occuper de la comparaison des prix (> = <)-->
-		<input type="submit" name="envoie" value="Envoyer"/>
 
+		
 		<!--Localisation
 		
 		-->
@@ -130,7 +133,7 @@ if(	isset($_POST['submit'])!='')
 
 
 		</form>
-		</u>
+
 		</div>
 <?php
 
