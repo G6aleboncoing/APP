@@ -20,9 +20,9 @@
  
 	<div id="slideshow">
 		<ul>
-			<li><a href="PageAccueil.html"> <img src="images/banniere_1.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="PageAccueil.html"> <img src="images/banniere_2.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
-			<li><a href="PageAccueil.html"> <img src="images/banniere_3.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+			<li><a href="Accueil.php"> <img src="images/banniere_1.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+			<li><a href="Accueil.php"> <img src="images/banniere_2.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
+			<li><a href="Accueil.php"> <img src="images/banniere_3.jpg" id="banniere" alt="Bannière de LeBonCoing.fr"  title="Accueil" ></a></li>
 		</ul>
 	</div>
 	

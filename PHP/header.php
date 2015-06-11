@@ -55,7 +55,7 @@
 		<h3>Mot de passe</h3>
 		<input class="green_input" type="password" name="mdp">
 		<input class="float_right" id="login_boutton" type="submit" value="Se connecter"><br>
-		<p><a href="#" id="password_creation">Créer votre compte</a> ou <a href="#" id="password_forgotten">Mot de passe oublié ?</a>
+		<p><a href="Inscription.php" id="password_creation">Créer votre compte</a> ou <a href="#" id="password_forgotten">Mot de passe oublié ?</a>
 
 		</form>';
 	}
