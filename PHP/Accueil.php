@@ -83,6 +83,8 @@
 
 </div>
 
+<div id="center_section">
+
 <div id="categories_section" class="white_background">
 	
 	
@@ -148,28 +150,33 @@
 		
 	<div class="annonce_section" id="annonce_section" >
 	
-	<table id="table_annonce">
-	<tr>
-		<td>Date</td>
-		<td rowspan="4"><a href="#"> <img src="#" alt="annonce" height="100" width="300" ></a></td>
-		<td>Nom de l'annonce</td>
-	</tr>
-	
-	<tr>
-		<td rowspan="3"></td>
-		<td>Catégories</td>
-	</tr>
+<ul class="white_background">
+	<li><p>9 juin</p>
+	<p>5:44</p></li>
+	<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
+	<li><p class="title">Titre de l'annonce: <span>Kiwiiiiiii c'est la vie</span></p>
+	<p>Variété: <span>Kiwi</span></p>
+	<p>Localisation: <span>Paris</span></p>
+	<p>Type: <span>Vente</span></p>
+	<p class="price">Prix: <span>5</span> €/kg</p>
+	</li>
+</ul>
 
-	<tr>
-		<td>Localisation</td>
-	</tr>
-
-	<tr>
-		<td>Prix</td>
-	</tr>
-	</table>
+<ul class="white_background">
+	<li><p>9 juin</p>
+	<p>5:44</p></li>
+	<li><a href="#"> <img src="images/kiwi.jpg" alt="photo de l'annonce" height="120" width="120" ></a></li>
+	<li><p class="title">Titre de l'annonce: <span>Kiwiiiiiii c'est la vie</span></p>
+	<p>Variété: <span>Kiwi</span></p>
+	<p>Localisation: <span>Paris</span></p>
+	<p>Type: <span>Vente</span></p>
+	<p class="price">Prix: <span>5</span> €/kg</p>
+	</li>
+</ul>
 
 	</div>
+
+</div>
 
 </div>
 
